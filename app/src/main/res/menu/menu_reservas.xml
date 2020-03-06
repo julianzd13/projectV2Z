@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mo_mis_reservas"
+        android:title="@string/reservas" />
+    <item
+        android:id="@+id/mo_reserva1"
+        android:title="@string/reserva1" />
+    <item
+        android:id="@+id/mo_reserva2"
+        android:title="@string/reserva2" />
+    <item
+        android:id="@+id/mo_reserva3"
+        android:title="@string/reserva3" />
+
+</menu>
