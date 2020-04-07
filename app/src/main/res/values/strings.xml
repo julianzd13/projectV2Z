@@ -1,23 +1,21 @@
 <resources>
-    <string name="app_name">Practic2</string>
+    <string name="app_name">Practica3</string>
     <string name="Mail">E-Mail</string>
     <string name="Password">Password</string>
     <string name="login">Login</string>
     <string name="Registro">Registrarse</string>
-    <string name="user_name">Nombre</string>
-    <string name="user_email">E-mail</string>
-    <string name="user_phon">Telefono</string>
-    <string name="user_pass">Password</string>
-    <string name="user_rpass">Repetir Password</string>
-    <string name="male">Hombre</string>
-    <string name="female">Mujer</string>
-    <string name="hobbies">Hobbies</string>
-    <string name="movies">Peliculas</string>
-    <string name="gym">Gimnasio</string>
-    <string name="read">Lectura</string>
-    <string name="shopping">Compras</string>
-    <string name="birthdate">Cumpleaños</string>
-    <string name="cities">Ciudad de Nacimiento</string>
+    <string name="user_name">Nombre(s) completos*</string>
+    <string name="user_lname">Apellido(s) Completos*</string>
+    <string name="user_email">E-mail*</string>
+    <string name="user_phon">Telefono o Movil</string>
+    <string name="user_pass">Password*</string>
+    <string name="user_rpass">Repetir Password*</string>
+    <string name="male">Masculino</string>
+    <string name="female">Femenino</string>
+
+    <string name="fechanaci">Fecha de Nacimiento*</string>
+
+    <string name="municipio">Municipio*</string>
     <string name="save">Guardar</string>
     <string name="result">Chequear Datos</string>
     <string name="error_login">Algún Campo esta vacio</string>
@@ -28,13 +26,25 @@
 
 
     <string-array name="city_list">
-        <item>Seleccionar Ciudad</item>
-        <item>Bogota</item>
-        <item>Cartagena</item>
-        <item>Manizales</item>
+        <item>Municipo</item>
+        <item>Bello</item>
+        <item>Envigado</item>
+        <item>Itagui</item>
         <item>Medellin</item>
-        <item>Pasto</item>
+        <item>La Estrella</item>
     </string-array>
+
+
+    <string-array name="cedula_list">
+        <item>Seleccionar Documento</item>
+        <item>Cédula de Ciudadanía</item>
+        <item>Cédula de Extrangería</item>
+        <item>Pasaporte</item>
+        <item>Registro Civil</item>
+        <item>Tarjeta de Identidad</item>
+    </string-array>
+
+
     <string name="title_activity_drawer">DrawerActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -59,6 +69,11 @@
     <string name="fecha">14/11/2020</string>
     <string name="hora">15:00-16:00</string>
     <string name="reserva4">Campo de tiro</string>
+    <string name="tipo_doc">Tipo de documento*</string>
+    <string name="user_num_cedu">Número de identificación*</string>
+    <string name="sexo">Sexo*</string>
+
+    <string name="home_second">Home Second</string>
 
 
 </resources>

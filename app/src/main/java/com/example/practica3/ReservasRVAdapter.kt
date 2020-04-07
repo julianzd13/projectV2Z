@@ -1,4 +1,4 @@
-package com.example.practic2
+package com.example.practica3
 
 import android.content.Context
 import android.content.Intent
@@ -28,6 +28,7 @@ class ReservasRVAdapter(
     ): ReservasRVAdapter.ReservasViewHolder {
         var itemView =LayoutInflater.from(context).inflate(R.layout.item_rv,parent,false)
         return ReservasViewHolder(itemView,context)
+
     }
 
     override fun getItemCount(): Int {
@@ -53,27 +54,28 @@ class ReservasRVAdapter(
         fun binReserva(reserva:Reservas){
             itemView.tv_cancha.text=reserva.cancha
             itemView.tv_estado.text=reserva.estado
+            itemView.tv_fecha.text=reserva.fecha
+            itemView.tv_hora.text=reserva.hora
             itemView.iv_estado.setImageResource(reserva.imagen)
+
             itemView.setOnClickListener{
                 Toast.makeText(context,reserva.cancha,Toast.LENGTH_SHORT).show()
                 var intent = Intent(context,ReservaDetalleActivity::class.java)
-               intent.putExtra("reserva",reserva).addFlags(FLAG_ACTIVITY_NEW_TASK)
+                intent.putExtra("reserva",reserva).addFlags(FLAG_ACTIVITY_NEW_TASK)
 
-               context.startActivity(intent)
-               // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                context.startActivity(intent)
+                // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 //context.startActivity(intent)
 
             }
+
             itemView.setOnLongClickListener{
                 Toast.makeText(context,reserva.cancha+"Long",Toast.LENGTH_SHORT).show()
                 return@setOnLongClickListener true
             }
 
 
-
-
         }
-
 
 
 

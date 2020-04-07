@@ -1,4 +1,4 @@
-package com.example.practic2
+package com.example.practica3
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
