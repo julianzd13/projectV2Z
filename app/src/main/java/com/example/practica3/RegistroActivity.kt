@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -99,6 +100,8 @@ class RegistroActivity : AppCompatActivity() {
                             .show()
                     } else {
 
+                        progressBar3.visibility = View.VISIBLE
+
                         val auth: FirebaseAuth
                         auth = FirebaseAuth.getInstance()
 
@@ -119,6 +122,7 @@ class RegistroActivity : AppCompatActivity() {
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     //Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                                    progressBar3.visibility = View.GONE
                                     Toast.makeText(baseContext, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show()
                                     //updateUI(null)

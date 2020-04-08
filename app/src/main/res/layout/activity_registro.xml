@@ -1,235 +1,257 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
-
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegistroActivity">
 
-    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <ScrollView
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp"
+        android:layout_height="match_parent"
         tools:context=".RegistroActivity">
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/tipo_doc"
-        android:textSize="20sp"
-        android:textColor="@color/darkcyan"
-        />
-
-    <Spinner
-        android:id="@+id/sp_cedula"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:entries="@array/cedula_list" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/user_num_cedu"
-        android:textSize="20sp"
-        android:textColor="@color/darkcyan"
-        android:layout_marginTop="10dp"
-        />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:textSize="16sp"
-        android:id="@+id/et_user_num_cedu"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/user_name"
-        android:textSize="20sp"
-        android:textColor="@color/darkcyan"
-        android:layout_marginTop="10dp"
-        />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:textSize="16sp"
-        android:id="@+id/et_user_name"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/user_lname"
-        android:textSize="20sp"
-        android:textColor="@color/darkcyan"
-        android:layout_marginTop="10dp"
-        />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:textSize="16sp"
-        android:id="@+id/et_user_lname"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/user_email"
-        android:textSize="20sp"
-        android:textColor="@color/darkcyan"
-        android:layout_marginTop="10dp"
-        />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:inputType="textEmailAddress"
-        android:textSize="16sp"
-        android:id="@+id/et_user_email"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/sexo"
-        android:textSize="20sp"
-        android:textColor="@color/darkcyan"
-        android:layout_marginTop="10dp"
-        />
-
-    <RadioGroup
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/male"
-            android:checked="true"
-            android:id="@+id/rb_male"
+            android:orientation="vertical"
+            android:padding="20dp"
+            tools:context=".RegistroActivity">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tipo_doc"
+            android:textSize="20sp"
+            android:textColor="@color/darkcyan"
             />
 
-        <RadioButton
-            android:layout_width="0dp"
+        <Spinner
+            android:id="@+id/sp_cedula"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:entries="@array/cedula_list" />
+
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/female"
-            android:id="@+id/rb_female"
+            android:text="@string/user_num_cedu"
+            android:textSize="20sp"
+            android:textColor="@color/darkcyan"
+            android:layout_marginTop="10dp"
             />
 
-    </RadioGroup>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:textSize="16sp"
+            android:id="@+id/et_user_num_cedu"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_name"
+            android:textSize="20sp"
+            android:textColor="@color/darkcyan"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:textSize="16sp"
+            android:id="@+id/et_user_name"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_lname"
+            android:textSize="20sp"
+            android:textColor="@color/darkcyan"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:textSize="16sp"
+            android:id="@+id/et_user_lname"
+            />
 
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/fechanaci"
-        android:textSize="20sp"
-        android:textColor="@color/darkcyan"
-        android:layout_marginTop="10dp"
-        />
 
-    <EditText
-        android:id="@+id/et_user_fecha_naci"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableStart="@android:drawable/ic_menu_today"
-        android:textSize="16sp" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/user_email"
+                android:textColor="@color/darkcyan"
+                android:textSize="20sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/user_phon"
-        android:textSize="20sp"
-        android:textColor="@color/darkcyan"
-        android:layout_marginTop="10dp"
-        />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:textSize="16sp"
+            android:id="@+id/et_user_email"
+            />
 
-        android:inputType="number"
-        android:textSize="16sp"
-        android:id="@+id/et_user_phon"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sexo"
+            android:textSize="20sp"
+            android:textColor="@color/darkcyan"
+            android:layout_marginTop="10dp"
+            />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/user_pass"
-        android:textSize="20sp"
-        android:textColor="@color/darkcyan"
-        android:layout_marginTop="10dp"
-        />
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/male"
+                android:checked="true"
+                android:id="@+id/rb_male"
+                />
 
-        android:inputType="textPassword"
-        android:textSize="16sp"
-        android:id="@+id/et_user_pass"
-        />
+            <RadioButton
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/female"
+                android:id="@+id/rb_female"
+                />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/user_rpass"
-        android:textSize="20sp"
-        android:textColor="@color/darkcyan"
-        android:layout_marginTop="10dp"
-        />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:inputType="textPassword"
-        android:textSize="16sp"
-        android:id="@+id/et_user_rpass"
-        />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/municipio"
-        android:textSize="20sp"
-        android:textColor="@color/darkcyan"
-        android:layout_marginTop="10dp"
-        />
-
-    <Spinner
-        android:id="@+id/sp_city"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:entries="@array/city_list" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:elevation="6dp"
-        android:background="@color/colorPrimary"
-        android:text="@string/save"
-        android:id="@+id/bt_save"
-        />
+        </RadioGroup>
 
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fechanaci"
+            android:textSize="20sp"
+            android:textColor="@color/darkcyan"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:id="@+id/et_user_fecha_naci"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@android:drawable/ic_menu_today"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_phon"
+            android:textSize="20sp"
+            android:textColor="@color/darkcyan"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:inputType="number"
+            android:textSize="16sp"
+            android:id="@+id/et_user_phon"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_pass"
+            android:textSize="20sp"
+            android:textColor="@color/darkcyan"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:inputType="textPassword"
+            android:textSize="16sp"
+            android:id="@+id/et_user_pass"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/user_rpass"
+            android:textSize="20sp"
+            android:textColor="@color/darkcyan"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:inputType="textPassword"
+            android:textSize="16sp"
+            android:id="@+id/et_user_rpass"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/municipio"
+            android:textSize="20sp"
+            android:textColor="@color/darkcyan"
+            android:layout_marginTop="10dp"
+            />
+
+        <Spinner
+            android:id="@+id/sp_city"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:entries="@array/city_list" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:elevation="6dp"
+            android:background="@color/colorPrimary"
+            android:text="@string/save"
+            android:id="@+id/bt_save"
+            />
+
+
+        </LinearLayout>
 
 </ScrollView>
 
+    <ProgressBar
+        android:id="@+id/progressBar3"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="0dp"
+        android:visibility="gone"
+         />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
