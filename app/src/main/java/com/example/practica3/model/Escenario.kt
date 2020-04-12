@@ -1,8 +1,8 @@
-package com.example.practica3
+package com.example.practica3.model
 
-//oeooeoeoeo
 
 class Escenario (
+    var id: String? = "",
     var nombre: String? = "",
     var antelacion: String? = "",
     var facilitador: String? = "",

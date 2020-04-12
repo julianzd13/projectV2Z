@@ -1,8 +1,8 @@
-package com.example.practica3
+package com.example.practica3.model
 
 import java.io.Serializable
 
-class Reservas (
+class ReservasLocal (
     var cancha:String,
     var estado:String,
     var fecha:String,

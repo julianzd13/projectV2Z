@@ -8,17 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.practica3.model.ReservasLocal
 import kotlinx.android.synthetic.main.item_rv.view.*
 
 class ReservasRVAdapter(
-    context: Context,reservasList: ArrayList<Reservas>
+    context: Context, reservasLocalList: ArrayList<ReservasLocal>
 ) : RecyclerView.Adapter<ReservasRVAdapter.ReservasViewHolder>(){
 
-    private var reservasList = emptyList<Reservas>()
+    private var reservasList = emptyList<ReservasLocal>()
     private val context: Context
 
     init {
-        this.reservasList=reservasList
+        this.reservasList=reservasLocalList
         this.context = context
     }
 
@@ -39,8 +40,8 @@ class ReservasRVAdapter(
         holder: ReservasRVAdapter.ReservasViewHolder,
         position: Int)
     {
-        val reservas: Reservas = reservasList[position]
-        holder.binReserva(reservas)
+        val reservasLocal: ReservasLocal = reservasList[position]
+        holder.binReserva(reservasLocal)
     }
     class ReservasViewHolder(
         itemView: View, context: Context
@@ -51,7 +52,7 @@ class ReservasRVAdapter(
             this.context=context
         }
 
-        fun binReserva(reserva:Reservas){
+        fun binReserva(reserva: ReservasLocal){
             itemView.tv_cancha.text=reserva.cancha
             itemView.tv_estado.text=reserva.estado
             itemView.tv_fecha.text=reserva.fecha

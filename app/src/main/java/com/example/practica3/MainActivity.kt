@@ -5,13 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.practica3.UTILS.Constantes
+import com.example.practica3.model.ReservasLocal
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -21,10 +18,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var reservasList: MutableList<Reservas> = ArrayList()
+        var reservasLocalList: MutableList<ReservasLocal> = ArrayList()
 
-        reservasList.add(
-            Reservas(getString(R.string.reserva1),
+        reservasLocalList.add(
+            ReservasLocal(
+                getString(R.string.reserva1),
                 "Aceptado",
                 "15/04/2020",
                 "14:00-15:00",
@@ -33,8 +31,9 @@ class MainActivity : AppCompatActivity() {
 
         )
 
-        reservasList.add(
-            Reservas(getString(R.string.reserva2),
+        reservasLocalList.add(
+            ReservasLocal(
+                getString(R.string.reserva2),
                 "Rechazado",
                 "11/05/2020",
                 "10:00-11:00",
@@ -43,8 +42,9 @@ class MainActivity : AppCompatActivity() {
 
         )
 
-        reservasList.add(
-            Reservas(getString(R.string.reserva3),
+        reservasLocalList.add(
+            ReservasLocal(
+                getString(R.string.reserva3),
                 "Pendiente",
                 "16/07/2020",
                 "12:00-13:00",
@@ -53,8 +53,9 @@ class MainActivity : AppCompatActivity() {
 
         )
 
-        reservasList.add(
-            Reservas(getString(R.string.reserva4),
+        reservasLocalList.add(
+            ReservasLocal(
+                getString(R.string.reserva4),
                 "Cancelado",
                 "19/07/2020",
                 "7:00-8:00",
@@ -62,8 +63,9 @@ class MainActivity : AppCompatActivity() {
             )
 
         )
-        reservasList.add(
-            Reservas(getString(R.string.reserva1),
+        reservasLocalList.add(
+            ReservasLocal(
+                getString(R.string.reserva1),
                 "Aceptado",
                 "19/07/2020",
                 "7:00-8:00",
@@ -81,7 +83,7 @@ class MainActivity : AppCompatActivity() {
 
         val reservasRVAdapter = ReservasRVAdapter(
             applicationContext,
-            reservasList as ArrayList
+            reservasLocalList as ArrayList
         )
 
         rv_reservas.adapter = reservasRVAdapter

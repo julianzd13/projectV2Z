@@ -9,6 +9,7 @@ import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.practica3.UTILS.Constantes
+import com.example.practica3.model.Usuario
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_registro.*
@@ -156,8 +157,10 @@ class RegistroActivity : AppCompatActivity() {
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("usuarios")
 
-        val user = Usuario(id = userId, nombre = a, apellido = b, tipo_documento = c, num_documento = d,
-             email = e, sexo = f, fecha_nacimiento = g, telefono = h, municipio = i)
+        val user = Usuario(
+            id = userId, nombre = a, apellido = b, tipo_documento = c, num_documento = d,
+            email = e, sexo = f, fecha_nacimiento = g, telefono = h, municipio = i
+        )
 
 
         myRef.child(userId).setValue(user).addOnSuccessListener {

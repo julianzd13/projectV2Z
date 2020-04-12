@@ -2,6 +2,7 @@ package com.example.practica3
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.practica3.model.ReservasLocal
 import kotlinx.android.synthetic.main.content_reserva_detalle.*
 
 class ReservaDetalleActivity : AppCompatActivity() {
@@ -12,8 +13,8 @@ class ReservaDetalleActivity : AppCompatActivity() {
         //setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val reservas:Reservas =intent?.getSerializableExtra("reserva")as Reservas
-        tv_cancha.text =reservas.cancha
+        val reservasLocal: ReservasLocal =intent?.getSerializableExtra("reserva")as ReservasLocal
+        tv_cancha.text =reservasLocal.cancha
        // tv_fecha.text=reservas.fecha
 
     }
