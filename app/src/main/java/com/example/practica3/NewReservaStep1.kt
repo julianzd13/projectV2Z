@@ -30,14 +30,6 @@ class NewReservaStep1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_reserva_step1)
 
-        var datafVistaRVA =intent.extras
-
-        if (datafVistaRVA != null) {
-            horafHoradRVA = datafVistaRVA?.getString("horaselec").toString()
-
-            et_new_horari_inten.setText(horafHoradRVA)
-        }
-
         searchView.isIconifiedByDefault = false
 
         val dataSetListener = object : DatePickerDialog.OnDateSetListener{
@@ -46,7 +38,7 @@ class NewReservaStep1 : AppCompatActivity() {
                 cal.set(Calendar.MONTH, month)
                 cal.set(Calendar.DAY_OF_YEAR, dayOfMonth)
 
-                val format = "MM/dd/yyyy"
+                val format = "MM-dd-yyyy"
                 val sdf = SimpleDateFormat(format, Locale.US)
                 fecha =sdf.format(cal.time).toString()
 
@@ -80,7 +72,7 @@ class NewReservaStep1 : AppCompatActivity() {
                 intent.putExtra("Cancha", canchaselec)
                 startActivityForResult(intent, 2233)
             } else{
-                Toast.makeText(this, "Primero la cancha y  la fecha", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Primero la cancha y la fecha", Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -141,11 +133,21 @@ class NewReservaStep1 : AppCompatActivity() {
             }
         })*/
 
+        bt_conti_to_step2.setOnClickListener {
+            if (horafHoradRVA == Constantes.EMPTY || canchaselec == null || fecha == Constantes.EMPTY) {
+                Toast.makeText(this, getText(R.string.error_login), Toast.LENGTH_SHORT).show()
+            }else{
+                //intent = Intent(this, NewReservaStep2::class.java)
+                //startActivity(intent)
+                Toast.makeText(this, "CONTINUARA", Toast.LENGTH_SHORT).show()
+            }
+        }
+
 
     }
 
 
-
+//////////////////////////METODOS////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -163,9 +165,9 @@ class NewReservaStep1 : AppCompatActivity() {
                     val canchan = snapshot.getValue(Escenario::class.java)
                     if (canchan!!.nombre.equals(searchText)) {
                         //val canchaselec = usuarion.telefono?.let { myRef.child(it) }
-                        canchaselec = canchan.descripcion
+                        canchaselec = canchan.nombre
                         Log.d("oeooeoe", "Value is: ${canchaselec}")
-                        textView3.text = "Descripcion: " + canchaselec.toString()
+                        textView3.text = "Descripcion: " + canchan.descripcion.toString()
                         existecancha = true
                     }
                 }
@@ -182,8 +184,7 @@ class NewReservaStep1 : AppCompatActivity() {
 
     }
 
-
-    /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == 2233 && resultCode == Activity.RESULT_CANCELED){
             Toast.makeText(this, "Canceled", Toast.LENGTH_SHORT).show()
         }
@@ -191,8 +192,9 @@ class NewReservaStep1 : AppCompatActivity() {
 
             Toast.makeText(this, "BBIIIEENNNN", Toast.LENGTH_SHORT).show()
 
-            var datafsign = data?.extras
-            horafHoradRVA = datafsign?.getString("horaselc").toString()
+            var datafhora = data?.extras
+            horafHoradRVA = datafhora?.getString("horaselec").toString()
+            et_new_horari_inten.setText(horafHoradRVA)
 
 
             Log.d("oooe", horafHoradRVA)
@@ -202,7 +204,7 @@ class NewReservaStep1 : AppCompatActivity() {
 
 
         super.onActivityResult(requestCode, resultCode, data)
-    }*/
+    }
 
 
 
