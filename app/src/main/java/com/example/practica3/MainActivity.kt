@@ -7,6 +7,8 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.practica3.Room.NewResRoom
+import com.example.practica3.Room.NewresDAO
 import com.example.practica3.model.ReservasLocal
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
@@ -17,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
         var reservasLocalList: MutableList<ReservasLocal> = ArrayList()
 

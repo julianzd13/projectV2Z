@@ -42,7 +42,7 @@ class LoginActivity : AppCompatActivity() {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG001", "signInWithEmail:success")
 
-                            Toast.makeText(this, "BienPueda", Toast.LENGTH_SHORT).show()
+                            //Toast.makeText(this, "BienPueda", Toast.LENGTH_SHORT).show()
                             intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
                             finish()
@@ -54,10 +54,15 @@ class LoginActivity : AppCompatActivity() {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG002", "signInWithEmail:failure", task.exception)
+                            if (task.exception!!.message.equals(getString(R.string.error_msg_login))) {
+
+
+                                Toast.makeText(this, "Usuario no registrado", Toast.LENGTH_SHORT).show()
+                            }else {
                             Toast.makeText(
                                 baseContext, "Authentication failed.",
                                 Toast.LENGTH_SHORT
-                            ).show()
+                            ).show() }
                             et_mail.setText(Constantes.EMPTY)
                             et_password.setText(Constantes.EMPTY)
                             //updateUI(null)

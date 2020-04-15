@@ -64,11 +64,18 @@
     <string name="tipo_doc">Tipo de documento*</string>
     <string name="user_num_cedu">Número de identificación*</string>
     <string name="sexo">Sexo*</string>
+    <string name="error_msg_login">There is no user record corresponding to this identifier. The user may have been deleted.</string>
 
     <string name="home_second">Home Second</string>
     <string name="hora_disp">Horario Disponible</string>
     <string name="hora">Hora Tales</string>
     <string name="continuar">Continuar</string>
+    <string name="titulo_fecha">Fecha:</string>
+    <string name="reserva_en_proceso">Reserva en Proceso...</string>
+    <string name="titulo_esce">Escenario:</string>
+    <string name="titulo_hora">Hora:</string>
+    <string name="titul_nuevares">Nueva Reserva</string>
+    <string name="name_misreserv">Mis Reservas</string>
 
 
 </resources>

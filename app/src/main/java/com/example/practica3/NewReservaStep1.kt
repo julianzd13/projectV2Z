@@ -9,9 +9,11 @@ import android.util.Log
 import android.widget.DatePicker
 import android.widget.SearchView
 import android.widget.Toast
+import com.example.practica3.Room.NewResRoom
 
 import com.example.practica3.UTILS.Constantes
 import com.example.practica3.model.Escenario
+import com.example.practica3.model.NuevaReservRoom
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_new_reserva_step1.*
 import kotlinx.android.synthetic.main.activity_registro.*
@@ -25,6 +27,7 @@ class NewReservaStep1 : AppCompatActivity() {
     private var cal = Calendar.getInstance()
     private var fecha : String = Constantes.EMPTY
     var canchaselec : String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -137,8 +140,16 @@ class NewReservaStep1 : AppCompatActivity() {
             if (horafHoradRVA == Constantes.EMPTY || canchaselec == null || fecha == Constantes.EMPTY) {
                 Toast.makeText(this, getText(R.string.error_login), Toast.LENGTH_SHORT).show()
             }else{
-                //intent = Intent(this, NewReservaStep2::class.java)
-                //startActivity(intent)
+
+
+                val nuevareservroom = NuevaReservRoom(1, canchaselec, fecha, horafHoradRVA)
+                val newresDAO = NewResRoom.database1.NewresDAO()
+                newresDAO.insertNuevares(nuevareservroom)
+
+
+
+                intent = Intent(this, NewReservaStep2::class.java)
+                startActivity(intent)
                 Toast.makeText(this, "CONTINUARA", Toast.LENGTH_SHORT).show()
             }
         }

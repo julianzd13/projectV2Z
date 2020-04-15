@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewReservaStep2">
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".NewReservaStep2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:context=".NewReservaStep2">
+
+
+         <TextView
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="@string/reserva_en_proceso"
+             android:textSize="20sp"
+             android:textColor="@color/darkcyan"
+        />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_esce"
+            android:textSize="20sp"
+            android:textColor="@color/darkcyan"
+            android:layout_marginTop="50dp"
+
+            />
+
+        <TextView
+
+            android:id="@+id/tv_escen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp" />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_fecha"
+            android:textSize="20sp"
+            android:textColor="@color/darkcyan"
+
+
+            />
+        <TextView
+
+            android:id="@+id/tv_fech"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp" />
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo_hora"
+            android:textSize="20sp"
+            android:textColor="@color/darkcyan"
+
+
+            />
+        <TextView
+
+            android:id="@+id/tv_hor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp" />
+
+
+
+
+    </LinearLayout>
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
