@@ -76,6 +76,7 @@
     <string name="titulo_hora">Hora:</string>
     <string name="titul_nuevares">Nueva Reserva</string>
     <string name="name_misreserv">Mis Reservas</string>
+    <string name="title_activity_maps">Map</string>
 
 
 </resources>

@@ -10,5 +10,7 @@ class Escenario (
     var integran: Int? = 0,
     var ubicacion: String? = "",
     var telefono: String? = "",
+    var latitude: String? = "",
+    var longitude: String? = "",
     var descripcion: String? = ""
 )

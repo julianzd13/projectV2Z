@@ -6,6 +6,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
 import android.widget.SearchView
 import android.widget.Toast
@@ -14,19 +16,32 @@ import com.example.practica3.Room.NewResRoom
 import com.example.practica3.UTILS.Constantes
 import com.example.practica3.model.Escenario
 import com.example.practica3.model.NuevaReservRoom
+import com.google.android.gms.maps.*
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_new_reserva_step1.*
 import kotlinx.android.synthetic.main.activity_registro.*
 import java.text.SimpleDateFormat
 import java.util.*
 
-class NewReservaStep1 : AppCompatActivity() {
+class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
+
+
+    private lateinit var mMap: GoogleMap
+    private lateinit var mapView: MapView
+    var longitudef : String? = "-75.5701685"
+    var latitudef : String? = "6.267651"
+    var mapmarker : String? = "UdeA"
 
     var horafHoradRVA : String = Constantes.EMPTY
 
     private var cal = Calendar.getInstance()
-    private var fecha : String = Constantes.EMPTY
+    private lateinit var  fecha : String
+
     var canchaselec : String? = null
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,15 +50,19 @@ class NewReservaStep1 : AppCompatActivity() {
 
         searchView.isIconifiedByDefault = false
 
+        mapView = findViewById(R.id.mapcancha)
+        mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync(this)
+
         val dataSetListener = object : DatePickerDialog.OnDateSetListener{
             override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
                 cal.set(Calendar.YEAR, year)
                 cal.set(Calendar.MONTH, month)
-                cal.set(Calendar.DAY_OF_YEAR, dayOfMonth)
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
                 val format = "MM-dd-yyyy"
                 val sdf = SimpleDateFormat(format, Locale.US)
-                fecha =sdf.format(cal.time).toString()
+                fecha = sdf.format(cal.time).toString()
 
                 et_new_fecha_inten.setText(fecha)
                 //Log.d("Fecha",fecha)
@@ -54,6 +73,7 @@ class NewReservaStep1 : AppCompatActivity() {
         }
 
         et_new_fecha_inten.setOnClickListener {
+
 
             DatePickerDialog(
                 this,
@@ -68,7 +88,7 @@ class NewReservaStep1 : AppCompatActivity() {
 
         et_new_horari_inten.setOnClickListener {
 
-            if (canchaselec!=null) {
+            if (canchaselec!=null && fecha!=Constantes.EMPTY ) {
                 var intent = Intent(this, VistaHoraDispActivity::class.java)
                 //startActivity(intent)
                 intent.putExtra("Fecha", fecha)
@@ -177,9 +197,24 @@ class NewReservaStep1 : AppCompatActivity() {
                     if (canchan!!.nombre.equals(searchText)) {
                         //val canchaselec = usuarion.telefono?.let { myRef.child(it) }
                         canchaselec = canchan.nombre
+                        mapmarker = canchaselec
+                        longitudef = canchan.longitude
+                        latitudef = canchan.latitude
                         Log.d("oeooeoe", "Value is: ${canchaselec}")
                         textView3.text = "Descripcion: " + canchan.descripcion.toString()
                         existecancha = true
+                        textView3.visibility = View.VISIBLE
+
+                        val positionCancha = LatLng(latitudef!!.toDouble(), longitudef!!.toDouble())
+
+                        mMap.addMarker(
+                            MarkerOptions()
+                                .position(positionCancha)
+                                .title(mapmarker)
+                        )
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(positionCancha, 15.0F))
+                        mapcancha.visibility = View.VISIBLE
+
                     }
                 }
                 if (!existecancha) {
@@ -217,7 +252,35 @@ class NewReservaStep1 : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
+    override fun onMapReady(googleMap: GoogleMap?) {
+        mMap = googleMap!!
 
+        // Add a marker in Sydney and move the camera
+        val positionCancha = LatLng(latitudef!!.toDouble(), longitudef!!.toDouble())
+
+        mMap.addMarker(
+            MarkerOptions()
+                .position(positionCancha)
+                .title(mapmarker)
+        )
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(positionCancha, 14.0F))
+        //mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
+    }
+
+    override fun onResume() {
+        super.onResume()
+        mapView.onResume()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView.onDestroy()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView.onLowMemory()
+    }
 
 
 }

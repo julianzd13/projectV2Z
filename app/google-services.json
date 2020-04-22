@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "860861313924",
+    "firebase_url": "https://proyectov1-b204f.firebaseio.com",
+    "project_id": "proyectov1-b204f",
+    "storage_bucket": "proyectov1-b204f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860861313924:android:edd3fa9d3b8d98e2aae3d1",
+        "android_client_info": {
+          "package_name": "com.example.practica3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "860861313924-e3eiqgs0lfrhae3ipvdc2s28ed749ecj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.practica3",
+            "certificate_hash": "dabf35069cde2ddd81d56ae4bfb2ecc199ecbdef"
+          }
+        },
+        {
+          "client_id": "860861313924-b8ktbataf4p8q1m3kjlggrf9l2phmbqb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-pHwNR2VsqDPoF7aIs7-hCyIMMF5c3rs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "860861313924-b8ktbataf4p8q1m3kjlggrf9l2phmbqb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
