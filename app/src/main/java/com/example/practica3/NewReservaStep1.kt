@@ -66,7 +66,7 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
 
                 et_new_fecha_inten.setText(fecha)
                 //Log.d("Fecha",fecha)
-                //date = sdf.format(cal.time).toString(
+                //date = sdf.format(cal.time).toString()
 
             }
 
