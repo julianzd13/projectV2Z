@@ -1,4 +1,4 @@
-package com.example.practica3
+package com.example.projectV2Z
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -8,8 +8,8 @@ import android.view.View
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.practica3.UTILS.Constantes
-import com.example.practica3.model.Usuario
+import com.example.projectV2Z.UTILS.Constantes
+import com.example.projectV2Z.model.Usuario
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_registro.*
@@ -41,7 +41,7 @@ class RegistroActivity : AppCompatActivity() {
             override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
                 cal.set(Calendar.YEAR, year)
                 cal.set(Calendar.MONTH, month)
-                cal.set(Calendar.DAY_OF_YEAR, dayOfMonth)
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
                 val format = "MM/dd/yyyy"
                 val sdf = SimpleDateFormat(format, Locale.US)

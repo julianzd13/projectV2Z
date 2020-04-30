@@ -1,4 +1,4 @@
-package com.example.practica3
+package com.example.projectV2Z
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,9 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.practica3.Room.NewResRoom
-import com.example.practica3.Room.NewresDAO
-import com.example.practica3.model.ReservasLocal
+import com.example.projectV2Z.model.ReservasLocal
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -106,7 +104,7 @@ class MainActivity : AppCompatActivity() {
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-            //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+            //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG
             //    .setAction("Action", null).show()
             var intent = Intent(this, NewReservaStep1::class.java)
             startActivity(intent)

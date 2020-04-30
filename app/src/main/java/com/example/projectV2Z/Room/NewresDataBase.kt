@@ -1,8 +1,8 @@
-package com.example.practica3.Room
+package com.example.projectV2Z.Room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.practica3.model.NuevaReservRoom
+import com.example.projectV2Z.model.NuevaReservRoom
 
 @Database(entities = [NuevaReservRoom::class], version= 1)
 

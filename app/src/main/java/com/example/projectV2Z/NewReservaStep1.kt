@@ -1,4 +1,4 @@
-package com.example.practica3
+package com.example.projectV2Z
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -7,21 +7,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
 import android.widget.SearchView
 import android.widget.Toast
-import com.example.practica3.Room.NewResRoom
+import com.example.projectV2Z.Room.NewResRoom
 
-import com.example.practica3.UTILS.Constantes
-import com.example.practica3.model.Escenario
-import com.example.practica3.model.NuevaReservRoom
+import com.example.projectV2Z.UTILS.Constantes
+import com.example.projectV2Z.model.Escenario
+import com.example.projectV2Z.model.NuevaReservRoom
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_new_reserva_step1.*
-import kotlinx.android.synthetic.main.activity_registro.*
 import java.text.SimpleDateFormat
 import java.util.*
 

@@ -1,7 +1,7 @@
-package com.example.practica3.Room
+package com.example.projectV2Z.Room
 
 import androidx.room.*
-import com.example.practica3.model.NuevaReservRoom
+import com.example.projectV2Z.model.NuevaReservRoom
 
 
 @Dao

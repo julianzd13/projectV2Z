@@ -1,4 +1,4 @@
-package com.example.practica3
+package com.example.projectV2Z
 
 import android.content.Context
 import android.content.Intent
@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.practica3.model.ReservasLocal
+import com.example.projectV2Z.model.ReservasLocal
 import kotlinx.android.synthetic.main.item_rv.view.*
 
 class ReservasRVAdapter(

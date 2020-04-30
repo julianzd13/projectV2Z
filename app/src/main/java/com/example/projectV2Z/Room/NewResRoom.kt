@@ -1,4 +1,4 @@
-package com.example.practica3.Room
+package com.example.projectV2Z.Room
 
 import android.app.Application
 import androidx.room.Room

@@ -1,17 +1,12 @@
-package com.example.practica3
+package com.example.projectV2Z
 
 
-import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.practica3.model.Reservas
-import com.google.android.material.internal.ContextUtils.getActivity
+import com.example.projectV2Z.model.Reservas
 import kotlinx.android.synthetic.main.item_horario.view.*
 import java.util.ArrayList
 

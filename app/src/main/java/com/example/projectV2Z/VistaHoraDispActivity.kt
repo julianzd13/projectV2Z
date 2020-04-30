@@ -1,4 +1,4 @@
-package com.example.practica3
+package com.example.projectV2Z
 
 import android.app.Activity
 import android.content.Intent
@@ -8,8 +8,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.practica3.UTILS.Constantes
-import com.example.practica3.model.Reservas
+import com.example.projectV2Z.UTILS.Constantes
+import com.example.projectV2Z.model.Reservas
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase

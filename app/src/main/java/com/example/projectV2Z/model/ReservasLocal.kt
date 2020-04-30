@@ -1,4 +1,4 @@
-package com.example.practica3.model
+package com.example.projectV2Z.model
 
 import java.io.Serializable
 

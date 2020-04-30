@@ -1,10 +1,10 @@
-package com.example.practica3
+package com.example.projectV2Z
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.practica3.Room.NewResRoom
-import com.example.practica3.Room.NewresDAO
+import com.example.projectV2Z.Room.NewResRoom
+import com.example.projectV2Z.Room.NewresDAO
 import kotlinx.android.synthetic.main.activity_new_reserva_step2.*
 import java.util.*
 import kotlin.concurrent.timerTask

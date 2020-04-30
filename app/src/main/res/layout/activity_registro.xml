@@ -155,6 +155,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableStart="@android:drawable/ic_menu_today"
+            android:focusable="false"
             android:textSize="16sp" />
 
         <TextView
