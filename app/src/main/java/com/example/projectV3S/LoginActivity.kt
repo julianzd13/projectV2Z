@@ -1,4 +1,4 @@
-package com.example.projectV2Z
+package com.example.projectV3S
 
 import android.app.Activity
 import android.content.Intent
@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import com.example.projectV2Z.UTILS.Constantes
+import com.example.projectV3S.UTILS.Constantes
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient

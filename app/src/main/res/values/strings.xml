@@ -77,6 +77,7 @@
     <string name="titul_nuevares">Nueva Reserva</string>
     <string name="name_misreserv">Mis Reservas</string>
     <string name="title_activity_maps">Map</string>
+    <string name="participantes">Participantes</string>
 
 
 </resources>

@@ -1,4 +1,4 @@
-package com.example.projectV2Z
+package com.example.projectV3S
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -10,11 +10,12 @@ import android.view.View
 import android.widget.DatePicker
 import android.widget.SearchView
 import android.widget.Toast
-import com.example.projectV2Z.Room.NewResRoom
+import com.example.projectV3S.Room.NewResRoom
+import com.example.projectV3S.Room.NewresDAO
 
-import com.example.projectV2Z.UTILS.Constantes
-import com.example.projectV2Z.model.Escenario
-import com.example.projectV2Z.model.NuevaReservRoom
+import com.example.projectV3S.UTILS.Constantes
+import com.example.projectV3S.model.Escenario
+import com.example.projectV3S.model.NuevaReservRoom
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
@@ -38,13 +39,15 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
     private lateinit var  fecha : String
 
     var canchaselec : String? = null
-
+    var num_partici : String? = null
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_reserva_step1)
+
+        eliminar_reserva_enpro()
 
         searchView.isIconifiedByDefault = false
 
@@ -155,20 +158,19 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
         })*/
 
         bt_conti_to_step2.setOnClickListener {
-            if (horafHoradRVA == Constantes.EMPTY || canchaselec == null || fecha == Constantes.EMPTY) {
+            if (horafHoradRVA == Constantes.EMPTY || canchaselec == null || fecha == Constantes.EMPTY || num_partici == null) {
                 Toast.makeText(this, getText(R.string.error_login), Toast.LENGTH_SHORT).show()
             }else{
-
 
                 val nuevareservroom = NuevaReservRoom(1, canchaselec, fecha, horafHoradRVA)
                 val newresDAO = NewResRoom.database1.NewresDAO()
                 newresDAO.insertNuevares(nuevareservroom)
 
 
-
                 intent = Intent(this, NewReservaStep2::class.java)
+                intent.putExtra("Numpartici", num_partici)
                 startActivity(intent)
-                Toast.makeText(this, "CONTINUARA", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "CONTINUARA", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -198,6 +200,7 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
                         mapmarker = canchaselec
                         longitudef = canchan.longitude
                         latitudef = canchan.latitude
+                        num_partici = canchan.integran
                         Log.d("oeooeoe", "Value is: ${canchaselec}")
                         textView3.text = "Descripcion: " + canchan.descripcion.toString()
                         existecancha = true
@@ -240,12 +243,9 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
             horafHoradRVA = datafhora?.getString("horaselec").toString()
             et_new_horari_inten.setText(horafHoradRVA)
 
-
-            Log.d("oooe", horafHoradRVA)
-
+            //Log.d("oooe", horafHoradRVA)
 
         }
-
 
         super.onActivityResult(requestCode, resultCode, data)
     }
@@ -265,9 +265,18 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
         //mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
     }
 
+    private fun eliminar_reserva_enpro() {
+        val newresDAO: NewresDAO = NewResRoom.database1.NewresDAO()
+        val nuevaReservRoom = newresDAO.searchEscenari()
+        if (nuevaReservRoom != null) {
+            newresDAO.deleteReserva(nuevaReservRoom) //Borro Datos de Room
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         mapView.onResume()
+        eliminar_reserva_enpro()
     }
 
     override fun onDestroy() {

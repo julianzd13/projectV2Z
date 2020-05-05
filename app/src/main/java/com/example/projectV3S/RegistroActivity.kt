@@ -1,4 +1,4 @@
-package com.example.projectV2Z
+package com.example.projectV3S
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -8,8 +8,8 @@ import android.view.View
 import android.widget.DatePicker
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.projectV2Z.UTILS.Constantes
-import com.example.projectV2Z.model.Usuario
+import com.example.projectV3S.UTILS.Constantes
+import com.example.projectV3S.model.Usuario
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_registro.*

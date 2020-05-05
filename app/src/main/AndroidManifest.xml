@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.projectV2Z">
+    package="com.example.projectV3S">
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:name="com.example.projectV2Z.Room.NewResRoom"
+        android:name="com.example.projectV3S.Room.NewResRoom"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -31,32 +31,32 @@
             android:value="@string/google_maps_key" />
 
 
-        <activity android:name="com.example.projectV2Z.NewReservaStep2" />
+        <activity android:name="com.example.projectV3S.NewReservaStep2" />
 
-        <activity android:name="com.example.projectV2Z.VistaHoraDispActivity" />
+        <activity android:name="com.example.projectV3S.VistaHoraDispActivity" />
 
         <activity
-            android:name="com.example.projectV2Z.NewReservaStep1"
+            android:name="com.example.projectV3S.NewReservaStep1"
             android:label="@string/titul_nuevares" />
 
         <activity
-            android:name="com.example.projectV2Z.ReservaDetalleActivity"
+            android:name="com.example.projectV3S.ReservaDetalleActivity"
             android:label="@string/title_activity_reserva_detalle"
-            android:parentActivityName="com.example.projectV2Z.MainActivity"
+            android:parentActivityName="com.example.projectV3S.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name="com.example.projectV2Z.MainActivity"
+            android:name="com.example.projectV3S.MainActivity"
             android:label="@string/name_misreserv">
 
 
         </activity>
 
-        <activity android:name="com.example.projectV2Z.RegistroActivity" />
+        <activity android:name="com.example.projectV3S.RegistroActivity" />
 
-        <activity android:name="com.example.projectV2Z.LoginActivity" />
+        <activity android:name="com.example.projectV3S.LoginActivity" />
 
-        <activity android:name="com.example.projectV2Z.SplashActivity">
+        <activity android:name="com.example.projectV3S.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

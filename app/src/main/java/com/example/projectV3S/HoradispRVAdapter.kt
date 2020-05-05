@@ -1,4 +1,4 @@
-package com.example.projectV2Z
+package com.example.projectV3S
 
 
 import android.content.Context
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.projectV2Z.model.Reservas
+import com.example.projectV3S.model.Reservas
 import kotlinx.android.synthetic.main.item_horario.view.*
 import java.util.ArrayList
 

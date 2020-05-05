@@ -1,4 +1,4 @@
-package com.example.projectV2Z
+package com.example.projectV3S
 
 import android.content.Context
 import android.content.Intent
@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.projectV2Z.model.ReservasLocal
+import com.example.projectV3S.model.ReservasLocal
 import kotlinx.android.synthetic.main.item_rv.view.*
 
 class ReservasRVAdapter(

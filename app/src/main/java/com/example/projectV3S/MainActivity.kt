@@ -1,4 +1,4 @@
-package com.example.projectV2Z
+package com.example.projectV3S
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,9 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.projectV2Z.model.ReservasLocal
+import com.example.projectV3S.Room.NewResRoom
+import com.example.projectV3S.Room.NewresDAO
+import com.example.projectV3S.model.ReservasLocal
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -29,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             .build()
         googleSignInClient = GoogleSignIn.getClient(this,gso)
 
+        //eliminar_reserva_enpro()
 
         var reservasLocalList: MutableList<ReservasLocal> = ArrayList()
 
@@ -114,9 +117,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-
-
-
+    /*
+    private fun eliminar_reserva_enpro() {
+        val newresDAO: NewresDAO = NewResRoom.database1.NewresDAO()
+        val nuevaReservRoom = newresDAO.searchEscenari()
+        if (nuevaReservRoom != null) {
+            newresDAO.deleteReserva(nuevaReservRoom) //Borro Datos de Room
+        }
+    }
+    */
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_overflow,menu)
@@ -135,5 +144,13 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
+    override fun onResume() {
+        super.onResume()
+        //eliminar_reserva_enpro()
+    }
+
+
 
 }

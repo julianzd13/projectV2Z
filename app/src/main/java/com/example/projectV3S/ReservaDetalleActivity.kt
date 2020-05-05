@@ -1,8 +1,8 @@
-package com.example.projectV2Z
+package com.example.projectV3S
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.projectV2Z.model.ReservasLocal
+import com.example.projectV3S.model.ReservasLocal
 import kotlinx.android.synthetic.main.content_reserva_detalle.*
 
 class ReservaDetalleActivity : AppCompatActivity() {

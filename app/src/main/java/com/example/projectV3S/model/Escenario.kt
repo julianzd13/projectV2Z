@@ -1,4 +1,4 @@
-package com.example.projectV2Z.model
+package com.example.projectV3S.model
 
 
 class Escenario (
@@ -7,7 +7,7 @@ class Escenario (
     var antelacion: String? = "",
     var facilitador: String? = "",
     var horario: String? = "",
-    var integran: Int? = 0,
+    var integran: String? = "",
     var ubicacion: String? = "",
     var telefono: String? = "",
     var latitude: String? = "",
