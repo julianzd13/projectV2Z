@@ -78,6 +78,7 @@
     <string name="name_misreserv">Mis Reservas</string>
     <string name="title_activity_maps">Map</string>
     <string name="participantes">Participantes</string>
+    <string name="error_step2">Campos Repetidos</string>
 
 
 </resources>
