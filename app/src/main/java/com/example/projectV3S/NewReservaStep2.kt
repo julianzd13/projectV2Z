@@ -22,7 +22,6 @@ class NewReservaStep2 : AppCompatActivity() {
 
     var num_particif1 : String = Constantes.EMPTY
     var numpartici = 0
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_reserva_step2)
@@ -35,10 +34,11 @@ class NewReservaStep2 : AppCompatActivity() {
         SetearSpinnersyeditt()
 
         bt_conti_to_step3.setOnClickListener {
-            numpartici = 0
-            var oknumpartici = Comprobacionlayers()
-            if (oknumpartici == num_particif1.toInt()){
+
+            Comprobacionlayers()
+            if (numpartici == num_particif1.toInt()){
                 Toast.makeText(this, "BIIIIENNN", Toast.LENGTH_SHORT).show()
+                numpartici = 0
             }
         }
 
@@ -87,15 +87,12 @@ class NewReservaStep2 : AppCompatActivity() {
         et_user_num_cedu_step2_15.id = 35
         et_user_num_cedu_step2_16.id = 36
         for (j in 21..(20 + num_particif1.toInt())){
-            //var keystring1 = "sp_cedula_step2_" + i.toString()
-            //sp_cedula_step2_${i}.visibility = View.VISIBLE
-            //keystring1.visibility = View.VISIBLE
             findViewById<EditText>(j).visibility = View.VISIBLE
         }
     }
 
     @SuppressLint("ResourceType")
-    private fun Comprobacionlayers(): Int {
+    private fun Comprobacionlayers() {
 
         et_user_num_cedu_step2_1.id = 21
         et_user_num_cedu_step2_2.id = 22
@@ -133,17 +130,14 @@ class NewReservaStep2 : AppCompatActivity() {
                     }
                 }
                 if(flag!= 1){
-                    var checkvar = verificacionfireb(vari1)
-                    if (checkvar == false) findViewById<EditText>(j).setText(Constantes.EMPTY)
-                    if (checkvar == true) numpartici +=1
+                    verificacionfireb(vari1, j)
                 }
             }
         }
 
-        return numpartici
     }
 
-    private fun verificacionfireb(searchText: String?): Boolean {
+    private fun verificacionfireb(searchText: String?, j: Int) {
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("usuarios")
         var existedocu = false
@@ -155,19 +149,20 @@ class NewReservaStep2 : AppCompatActivity() {
                 for (snapshot in dataSnapshot.children){
                     val usertodocu = snapshot.getValue(Usuario::class.java)
                     if (usertodocu!!.num_documento.equals(searchText)){
+                        numpartici ++
                         existedocu = true
-
                     }
                 }
                 if (!existedocu){
                     Toast.makeText(this@NewReservaStep2, "NO existe Ususario", Toast.LENGTH_SHORT).show()
+                    findViewById<EditText>(j).setText(Constantes.EMPTY)
                 }
             }
             override fun onCancelled(error: DatabaseError) {
                 Log.w("quepasomal", "Failed to read value", error.toException())
             }
         })
-        return existedocu
+
     }
 
 
