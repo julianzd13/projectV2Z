@@ -8,7 +8,9 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
+import com.example.projectV3S.Room.NewResRoom
 import com.example.projectV3S.UTILS.Constantes
+import com.example.projectV3S.model.NuevaReservRoom
 import com.example.projectV3S.model.Usuario
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -37,9 +39,13 @@ class NewReservaStep2 : AppCompatActivity() {
 
             Comprobacionlayers()
             if (numpartici == num_particif1.toInt()){
+                Guardar_partici_ROOM()
                 Toast.makeText(this, "BIIIIENNN", Toast.LENGTH_SHORT).show()
                 numpartici = 0
+
+
             }
+            if (numpartici != num_particif1.toInt()) numpartici = 0
         }
 
 
@@ -162,6 +168,41 @@ class NewReservaStep2 : AppCompatActivity() {
                 Log.w("quepasomal", "Failed to read value", error.toException())
             }
         })
+
+    }
+
+    private fun Guardar_partici_ROOM() {
+
+        val vari1 : String= et_user_num_cedu_step2_1.text.toString()
+        val vari2 : String= et_user_num_cedu_step2_2.text.toString()
+        val vari3 : String= et_user_num_cedu_step2_3.text.toString()
+        val vari4 : String= et_user_num_cedu_step2_4.text.toString()
+        val vari5 : String= et_user_num_cedu_step2_5.text.toString()
+        val vari6 : String= et_user_num_cedu_step2_6.text.toString()
+        val vari7 : String= et_user_num_cedu_step2_7.text.toString()
+        val vari8 : String= et_user_num_cedu_step2_8.text.toString()
+        val vari9 : String= et_user_num_cedu_step2_9.text.toString()
+        val vari10 : String= et_user_num_cedu_step2_10.text.toString()
+        val vari11 : String= et_user_num_cedu_step2_11.text.toString()
+        val vari12 : String= et_user_num_cedu_step2_12.text.toString()
+        val vari13 : String= et_user_num_cedu_step2_13.text.toString()
+        val vari14 : String= et_user_num_cedu_step2_14.text.toString()
+        val vari15 : String= et_user_num_cedu_step2_15.text.toString()
+        val vari16 : String= et_user_num_cedu_step2_16.text.toString()
+
+        val newresDAO = NewResRoom.database1.NewresDAO()
+        val nuevaReservRoom1 = newresDAO.searchEscenari()
+
+        val canchaselec = nuevaReservRoom1.escen
+        val fechaselec = nuevaReservRoom1.fecha
+        val horaselec = nuevaReservRoom1.hora
+        val nuevareservroom2 = NuevaReservRoom(1,canchaselec , fechaselec, horaselec, participante1 = vari1, participante2 = vari2,
+            participante3 = vari3, participante4 = vari4, participante5 = vari5, participante6 = vari6,
+            participante7 = vari7, participante8 = vari8, participante9 = vari9, participante10 = vari10,
+            participante11 = vari11, participante12 = vari12, participante13 = vari13, participante14 = vari14,
+            participante15 = vari15, participante16 = vari16)
+        newresDAO.deleteReserva(nuevaReservRoom1)
+        newresDAO.insertNuevares(nuevareservroom2)
 
     }
 
