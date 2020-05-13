@@ -11,7 +11,10 @@ class NuevaReservRoom (
     @ColumnInfo(name = "escenario") val escen: String?,
     @ColumnInfo(name = "fecha") val fecha: String?,
     @ColumnInfo(name = "hora") val hora: String?,
-    @ColumnInfo(name = "participante1") val participante1: String?= "",
+
+    @ColumnInfo(name = "participantes") var participantes: MutableList<String> = mutableListOf()
+
+    /*@ColumnInfo(name = "participante1") val participante1: String?= "",
     @ColumnInfo(name = "participante2") val participante2: String?= "",
     @ColumnInfo(name = "participante3") val participante3: String?= "",
     @ColumnInfo(name = "participante4") val participante4: String?= "",
@@ -26,5 +29,5 @@ class NuevaReservRoom (
     @ColumnInfo(name = "participante13") val participante13: String?= "",
     @ColumnInfo(name = "participante14") val participante14: String?= "",
     @ColumnInfo(name = "participante15") val participante15: String?= "",
-    @ColumnInfo(name = "participante16") val participante16: String?= ""
+    @ColumnInfo(name = "participante16") val participante16: String?= ""*/
 )

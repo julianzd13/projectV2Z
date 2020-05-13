@@ -114,7 +114,6 @@ class RegistroActivity : AppCompatActivity() {
                                     //Log.d(TAG, "createUserWithEmail:success")
                                     val user = auth.currentUser
                                     //updateUI(user)
-
                                     writeNewUser(user!!.uid, name, lname, tipo_docu, num_docu, e_mail,
                                         sexo, fecha, phon, municipio)
 

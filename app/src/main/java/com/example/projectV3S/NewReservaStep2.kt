@@ -24,6 +24,7 @@ class NewReservaStep2 : AppCompatActivity() {
 
     var num_particif1 : String = Constantes.EMPTY
     var numpartici = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_reserva_step2)
@@ -171,36 +172,43 @@ class NewReservaStep2 : AppCompatActivity() {
 
     }
 
+    @SuppressLint("ResourceType")
     private fun Guardar_partici_ROOM() {
 
-        val vari1 : String= et_user_num_cedu_step2_1.text.toString()
-        val vari2 : String= et_user_num_cedu_step2_2.text.toString()
-        val vari3 : String= et_user_num_cedu_step2_3.text.toString()
-        val vari4 : String= et_user_num_cedu_step2_4.text.toString()
-        val vari5 : String= et_user_num_cedu_step2_5.text.toString()
-        val vari6 : String= et_user_num_cedu_step2_6.text.toString()
-        val vari7 : String= et_user_num_cedu_step2_7.text.toString()
-        val vari8 : String= et_user_num_cedu_step2_8.text.toString()
-        val vari9 : String= et_user_num_cedu_step2_9.text.toString()
-        val vari10 : String= et_user_num_cedu_step2_10.text.toString()
-        val vari11 : String= et_user_num_cedu_step2_11.text.toString()
-        val vari12 : String= et_user_num_cedu_step2_12.text.toString()
-        val vari13 : String= et_user_num_cedu_step2_13.text.toString()
-        val vari14 : String= et_user_num_cedu_step2_14.text.toString()
-        val vari15 : String= et_user_num_cedu_step2_15.text.toString()
-        val vari16 : String= et_user_num_cedu_step2_16.text.toString()
+        et_user_num_cedu_step2_1.id = 21
+        et_user_num_cedu_step2_2.id = 22
+        et_user_num_cedu_step2_3.id = 23
+        et_user_num_cedu_step2_4.id = 24
+        et_user_num_cedu_step2_5.id = 25
+        et_user_num_cedu_step2_6.id = 26
+        et_user_num_cedu_step2_7.id = 27
+        et_user_num_cedu_step2_8.id = 28
+        et_user_num_cedu_step2_9.id = 29
+        et_user_num_cedu_step2_10.id = 30
+        et_user_num_cedu_step2_11.id = 31
+        et_user_num_cedu_step2_12.id = 32
+        et_user_num_cedu_step2_13.id = 33
+        et_user_num_cedu_step2_14.id = 34
+        et_user_num_cedu_step2_15.id = 35
+        et_user_num_cedu_step2_16.id = 36
+
+        var participanteslist : MutableList<String> = mutableListOf()
+        participanteslist.clear()
+
+        for ( j in 21..(20 + num_particif1.toInt())){
+            var vari1 = findViewById<EditText>(j).text.toString()
+            if(vari1.isNotEmpty() || vari1 != Constantes.EMPTY){
+                participanteslist.add(vari1)
+            }
+        }
 
         val newresDAO = NewResRoom.database1.NewresDAO()
         val nuevaReservRoom1 = newresDAO.searchEscenari()
-
         val canchaselec = nuevaReservRoom1.escen
         val fechaselec = nuevaReservRoom1.fecha
         val horaselec = nuevaReservRoom1.hora
-        val nuevareservroom2 = NuevaReservRoom(1,canchaselec , fechaselec, horaselec, participante1 = vari1, participante2 = vari2,
-            participante3 = vari3, participante4 = vari4, participante5 = vari5, participante6 = vari6,
-            participante7 = vari7, participante8 = vari8, participante9 = vari9, participante10 = vari10,
-            participante11 = vari11, participante12 = vari12, participante13 = vari13, participante14 = vari14,
-            participante15 = vari15, participante16 = vari16)
+        val nuevareservroom2 = NuevaReservRoom(1,canchaselec , fechaselec, horaselec, participanteslist)
+
         newresDAO.deleteReserva(nuevaReservRoom1)
         newresDAO.insertNuevares(nuevareservroom2)
 
