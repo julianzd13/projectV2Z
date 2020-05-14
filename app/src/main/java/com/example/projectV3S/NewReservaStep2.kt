@@ -1,6 +1,7 @@
 package com.example.projectV3S
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -24,6 +25,7 @@ class NewReservaStep2 : AppCompatActivity() {
 
     var num_particif1 : String = Constantes.EMPTY
     var numpartici = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_reserva_step2)
@@ -41,6 +43,9 @@ class NewReservaStep2 : AppCompatActivity() {
             if (numpartici == num_particif1.toInt()){
                 Guardar_partici_ROOM()
                 Toast.makeText(this, "BIIIIENNN", Toast.LENGTH_SHORT).show()
+                intent = Intent(this, NewReservaStep3::class.java)
+                intent.putExtra("Numpartici", num_particif1)
+                startActivity(intent)
                 numpartici = 0
 
 

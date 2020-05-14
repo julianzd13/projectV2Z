@@ -57,7 +57,14 @@ class ReservasRVAdapter(
             itemView.tv_estado.text=reserva.estado
             itemView.tv_fecha.text=reserva.fecha
             itemView.tv_hora.text=reserva.hora
-            itemView.iv_estado.setImageResource(reserva.imagen)
+
+            if(reserva.estado == "Pendiente")itemView.iv_estado.setImageResource(R.drawable.pendiente)
+            if(reserva.estado == "Rechazado")itemView.iv_estado.setImageResource(R.drawable.rechazado)
+            if(reserva.estado == "Aceptado")itemView.iv_estado.setImageResource(R.drawable.aceptado)
+            if(reserva.estado == "Cancelado")itemView.iv_estado.setImageResource(R.drawable.cancelado)
+
+
+            //itemView.iv_estado.setImageResource(reserva.imagen)
 
             itemView.setOnClickListener{
                 Toast.makeText(context,reserva.cancha,Toast.LENGTH_SHORT).show()

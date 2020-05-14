@@ -3,6 +3,7 @@ package com.example.projectV3S
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,9 +16,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    val reservasLocalList: MutableList<ReservasLocal> = ArrayList()
+    lateinit var reservasRVAdapter : ReservasRVAdapter
 
     var googleSignInClient : GoogleSignInClient? = null
 
@@ -33,75 +41,22 @@ class MainActivity : AppCompatActivity() {
 
         //eliminar_reserva_enpro()
 
-        var reservasLocalList: MutableList<ReservasLocal> = ArrayList()
+        cargarreservasuser()
 
-        reservasLocalList.add(
-            ReservasLocal(
-                getString(R.string.reserva1),
-                "Aceptado",
-                "15/04/2020",
-                "14:00-15:00",
-                R.drawable.aceptado
-            )
 
-        )
-
-        reservasLocalList.add(
-            ReservasLocal(
-                getString(R.string.reserva2),
-                "Rechazado",
-                "11/05/2020",
-                "10:00-11:00",
-                R.drawable.rechazado
-            )
-
-        )
-
-        reservasLocalList.add(
-            ReservasLocal(
-                getString(R.string.reserva3),
-                "Pendiente",
-                "16/07/2020",
-                "12:00-13:00",
-                R.drawable.pendiente
-            )
-
-        )
-
-        reservasLocalList.add(
-            ReservasLocal(
-                getString(R.string.reserva4),
-                "Cancelado",
-                "19/07/2020",
-                "7:00-8:00",
-                R.drawable.cancelado
-            )
-
-        )
-        reservasLocalList.add(
-            ReservasLocal(
-                getString(R.string.reserva1),
-                "Aceptado",
-                "19/07/2020",
-                "7:00-8:00",
-                R.drawable.aceptado
-            )
-
-        )
-
-        rv_reservas.setHasFixedSize(true)
         rv_reservas.layoutManager = LinearLayoutManager(
             applicationContext,
             RecyclerView.VERTICAL,
             false
         )
 
-        val reservasRVAdapter = ReservasRVAdapter(
+        /*reservasRVAdapter = ReservasRVAdapter(
             applicationContext,
             reservasLocalList as ArrayList
         )
 
-        rv_reservas.adapter = reservasRVAdapter
+        rv_reservas.setHasFixedSize(true)
+        rv_reservas.adapter = reservasRVAdapter*/
 
 
 
@@ -115,6 +70,38 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    private fun cargarreservasuser() {
+        val auth: FirebaseAuth
+        auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
+
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("reservasuser").child(user!!.uid)
+
+        reservasLocalList.clear()
+
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                reservasLocalList.clear()
+                for (snapshot in dataSnapshot.children){
+                    val reservalocal = snapshot.getValue(ReservasLocal::class.java)
+                    reservasLocalList.add(reservalocal!!)
+                }
+                reservasRVAdapter = ReservasRVAdapter(
+                    applicationContext,
+                    reservasLocalList as ArrayList
+                )
+
+                rv_reservas.setHasFixedSize(true)
+                rv_reservas.adapter = reservasRVAdapter
+                //reservasRVAdapter.notifyDataSetChanged()
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("Lista","Failed to read value.", error.toException())
+            }
+        })
     }
 
     /*
@@ -148,6 +135,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+        //cargarreservasuser()
         //eliminar_reserva_enpro()
     }
 
