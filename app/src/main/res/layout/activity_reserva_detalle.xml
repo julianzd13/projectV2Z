@@ -33,6 +33,10 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_reserva_detalle" />
+    <include layout="@layout/content_reserva_detalle" >
+        <TextView
+            >
+    </include>
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
