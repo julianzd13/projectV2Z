@@ -53,8 +53,8 @@
     <string name="menu_send">Send</string>
     <string name="reserva3">Cancha de Tenis</string>
     <string name="reservas">Mis reservas</string>
-    <string name="reserva1">Bolera</string>
-    <string name="reserva2">Cancha Sintetica</string>
+    <string name="Bolera">Bolera</string>
+
     <string name="cancha">Cancha</string>
     <string name="estado">Estado</string>
     <string name="title_activity_reserva_detalle">ReservaDetalleActivity</string>
@@ -80,6 +80,11 @@
     <string name="participantes">Participantes</string>
     <string name="error_step2">Campos Repetidos</string>
     <string name="titul_parti">"Participante: "</string>
+    <string name="cancelar_reserva">Cancelar Reserva</string>
+    <string name="descripcion">Descripcion: </string>
+    <string name="ubicacion">"Ubicacion: "</string>
+    <string name="telefono">"Telefono: "</string>
+    <string name="certificado">Descargar Certificado</string>
 
 
 </resources>

@@ -7,6 +7,7 @@ class ReservasLocal (
     var estado:String? = "",
     var fecha:String? = "",
     var hora:String? = "",
+    var id:String? = "",
     var num_doc_part1: String? = "",
     var num_doc_part2: String? = "",
     var num_doc_part3: String? = "",

@@ -8,12 +8,590 @@
     tools:context=".ReservaDetalleActivity"
     tools:showIn="@layout/activity_reserva_detalle">
 
-    <TextView
-        android:id="@+id/tv_cancha"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/reserva1" />
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:context=".ReservaDetalleActivity">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="280dp">
+
+            <ImageView
+                android:id="@+id/imageViewdetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titulo_esce"
+                android:textSize="14sp" />
+
+            <TextView
+
+                android:id="@+id/tv_cancha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/descripcion"
+                android:textSize="14sp" />
+
+            <TextView
+
+                android:id="@+id/tv_descrip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/ubicacion"
+                android:textSize="14sp" />
+
+            <TextView
+
+                android:id="@+id/tv_ubicacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/telefono"
+                android:textSize="14sp" />
+
+            <TextView
+
+                android:id="@+id/tv_telefon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+
+                android:text="@string/estado"
+                android:textSize="14sp" />
+
+            <TextView
+
+                android:id="@+id/tv_estad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titulo_fecha" />
+
+            <TextView
+                android:id="@+id/tv_fec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titulo_hora" />
+
+            <TextView
+                android:id="@+id/tv_hora1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:text="@string/participantes"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"/>
+
+
+        <LinearLayout
+            android:id="@+id/ll_doc1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titul_parti" />
+
+            <TextView
+                android:id="@+id/tv_part1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_doc2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titul_parti" />
+
+            <TextView
+                android:id="@+id/tv_part2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_doc3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titul_parti" />
+
+            <TextView
+                android:id="@+id/tv_part3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_doc4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titul_parti" />
+
+            <TextView
+                android:id="@+id/tv_part4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_doc5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titul_parti" />
+
+            <TextView
+                android:id="@+id/tv_part5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_doc6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titul_parti" />
+
+            <TextView
+                android:id="@+id/tv_part6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_doc7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titul_parti" />
+
+            <TextView
+                android:id="@+id/tv_part7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_doc8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titul_parti" />
+
+            <TextView
+                android:id="@+id/tv_part8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_doc9"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titul_parti" />
+
+            <TextView
+                android:id="@+id/tv_part9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_doc10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titul_parti" />
+
+            <TextView
+                android:id="@+id/tv_part10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_doc11"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titul_parti" />
+
+            <TextView
+                android:id="@+id/tv_part11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_doc12"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titul_parti" />
+
+            <TextView
+                android:id="@+id/tv_part12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_doc13"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titul_parti" />
+
+            <TextView
+                android:id="@+id/tv_part13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_doc14"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titul_parti" />
+
+            <TextView
+                android:id="@+id/tv_part14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_doc15"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titul_parti" />
+
+            <TextView
+                android:id="@+id/tv_part15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_doc16"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="@string/titul_parti" />
+
+            <TextView
+                android:id="@+id/tv_part16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text=" " />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_cancelarr"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/btn_dis"
+            android:elevation="20dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/cancelar_reserva"
+            android:textColor="@color/white"
+            android:visibility="gone"/>
+        <Button
+            android:id="@+id/bt_certificado"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/btn_dis"
+            android:elevation="20dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/certificado"
+            android:textColor="@color/white"
+            android:visibility="gone"/>
+
+
+    </LinearLayout>
 
 
 </androidx.core.widget.NestedScrollView>

@@ -92,20 +92,20 @@ class NewReservaStep3 : AppCompatActivity() {
 
         tv_part1.text = partici_1
         tv_part2.text = partici_2
-        tv_part3.text = partici_2
-        tv_part4.text = partici_2
-        tv_part5.text = partici_2
-        tv_part6.text = partici_2
-        tv_part7.text = partici_2
-        tv_part8.text = partici_2
-        tv_part9.text = partici_2
-        tv_part10.text = partici_2
-        tv_part11.text = partici_2
-        tv_part12.text = partici_2
-        tv_part13.text = partici_2
-        tv_part14.text = partici_2
-        tv_part15.text = partici_2
-        tv_part16.text = partici_2
+        tv_part3.text = partici_3
+        tv_part4.text = partici_4
+        tv_part5.text = partici_5
+        tv_part6.text = partici_6
+        tv_part7.text = partici_7
+        tv_part8.text = partici_8
+        tv_part9.text = partici_9
+        tv_part10.text = partici_10
+        tv_part11.text = partici_11
+        tv_part12.text = partici_12
+        tv_part13.text = partici_13
+        tv_part14.text = partici_14
+        tv_part15.text = partici_15
+        tv_part16.text = partici_16
 
         SetearTextView()
 
@@ -163,14 +163,14 @@ class NewReservaStep3 : AppCompatActivity() {
         var myRef = database.getReference("reservas")
 
         val reserva = Reservas(
-            hora = hora, fecha = fecha, escenario = escenario, num_doc_part1 = partici_1, num_doc_part2 = partici_2,
+            hora = hora, fecha = fecha, escenario = escenario,iduser = user!!.uid ,num_doc_part1 = partici_1, num_doc_part2 = partici_2,
             num_doc_part3 = partici_3, num_doc_part4 = partici_4,num_doc_part5 = partici_5, num_doc_part6 = partici_6,
             num_doc_part7 = partici_7, num_doc_part8 = partici_8, num_doc_part9 = partici_9, num_doc_part10 = partici_10,
             num_doc_part11 = partici_11, num_doc_part12 = partici_12, num_doc_part13 = partici_13, num_doc_part14 = partici_14,
             num_doc_part15 = partici_15, num_doc_part16 = partici_16
         )
 
-        myRef.child(fecha).child(escenario).child(user!!.uid).setValue(reserva).addOnSuccessListener {
+        myRef.child(fecha).child(escenario).child(user.uid).setValue(reserva).addOnSuccessListener {
             flag ++
             Toast.makeText(this, flag.toString(),Toast.LENGTH_SHORT).show()
         }
@@ -179,11 +179,11 @@ class NewReservaStep3 : AppCompatActivity() {
         val idreserva = myRef.push().key
 
         val reserval = ReservasLocal(
-            cancha = escenario, estado = "Pendiente", fecha = fecha, hora = hora, num_doc_part1 = partici_1, num_doc_part2 = partici_2,
-            num_doc_part3 = partici_3, num_doc_part4 = partici_4,num_doc_part5 = partici_5, num_doc_part6 = partici_6,
-            num_doc_part7 = partici_7, num_doc_part8 = partici_8, num_doc_part9 = partici_9, num_doc_part10 = partici_10,
-            num_doc_part11 = partici_11, num_doc_part12 = partici_12, num_doc_part13 = partici_13, num_doc_part14 = partici_14,
-            num_doc_part15 = partici_15, num_doc_part16 = partici_16
+            cancha = escenario, estado = "Pendiente", fecha = fecha, hora = hora, id = idreserva, num_doc_part1 = partici_1,
+            num_doc_part2 = partici_2, num_doc_part3 = partici_3, num_doc_part4 = partici_4,num_doc_part5 = partici_5,
+            num_doc_part6 = partici_6, num_doc_part7 = partici_7, num_doc_part8 = partici_8, num_doc_part9 = partici_9,
+            num_doc_part10 = partici_10, num_doc_part11 = partici_11, num_doc_part12 = partici_12, num_doc_part13 = partici_13,
+            num_doc_part14 = partici_14, num_doc_part15 = partici_15, num_doc_part16 = partici_16
         )
 
         myRef.child(user.uid).child(idreserva!!).setValue(reserval).addOnSuccessListener {
@@ -197,9 +197,6 @@ class NewReservaStep3 : AppCompatActivity() {
             }
         }
 
-
     }
-
-
 
 }

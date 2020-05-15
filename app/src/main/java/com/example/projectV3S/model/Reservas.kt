@@ -5,6 +5,7 @@ class Reservas (
     var hora: String? = "",
     var fecha: String? = "",
     var escenario: String? = "",
+    var iduser:String? = "",
     //var estado: String? = "",
     var num_doc_part1: String? = "",
     var num_doc_part2: String? = "",

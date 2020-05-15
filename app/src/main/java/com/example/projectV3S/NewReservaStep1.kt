@@ -16,9 +16,11 @@ import com.example.projectV3S.Room.NewresDAO
 import com.example.projectV3S.UTILS.Constantes
 import com.example.projectV3S.model.Escenario
 import com.example.projectV3S.model.NuevaReservRoom
+import com.example.projectV3S.model.Reservas
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_new_reserva_step1.*
 import java.text.SimpleDateFormat
@@ -65,7 +67,9 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
                 val sdf = SimpleDateFormat(format, Locale.US)
                 fecha = sdf.format(cal.time).toString()
 
-                et_new_fecha_inten.setText(fecha)
+                comprobarfecha(fecha)
+
+                //et_new_fecha_inten.setText(fecha)
                 //Log.d("Fecha",fecha)
                 //date = sdf.format(cal.time).toString
 
@@ -75,16 +79,18 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
 
         et_new_fecha_inten.setOnClickListener {
 
+            if(canchaselec == null){
+                Toast.makeText(this, "Primero la cancha", Toast.LENGTH_SHORT).show()
+            }else {
+                DatePickerDialog(
+                    this,
+                    dataSetListener,
+                    cal.get(Calendar.YEAR),
+                    cal.get(Calendar.MONTH),
+                    cal.get(Calendar.DAY_OF_MONTH)
 
-            DatePickerDialog(
-                this,
-                dataSetListener,
-                cal.get(Calendar.YEAR),
-                cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH)
-
-            ).show()
-
+                ).show()
+            }
         }
 
         et_new_horari_inten.setOnClickListener {
@@ -178,9 +184,41 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
     }
 
 
+
+
 //////////////////////////METODOS////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    private fun comprobarfecha(fecha: String) {
 
+        val auth: FirebaseAuth
+        auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
+
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("reservas").child(fecha).child(canchaselec.toString())
+
+        var existereser = false
+        myRef.addValueEventListener(object : ValueEventListener{
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (snapshot in dataSnapshot.children){
+                    val reser = snapshot.getValue(Reservas::class.java)
+                    if (reser!!.iduser == user!!.uid){
+                        Toast.makeText(this@NewReservaStep1, "Ya tiene reserva en esta fecha", Toast.LENGTH_SHORT).show()
+                        existereser = true
+                    }
+                }
+                if (!existereser) {
+                    et_new_fecha_inten.setText(fecha)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("quepasomal", "Failed to read value.", error.toException())
+            }
+
+        })
+    }
 
     private fun firebaseSearchSub(searchText: String?) {
 
