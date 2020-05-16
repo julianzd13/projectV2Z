@@ -30,11 +30,21 @@ class LoginActivity : AppCompatActivity() {
         val auth: FirebaseAuth
         auth = FirebaseAuth.getInstance()
 
+        val user = auth.currentUser
+
+        if (user?.uid != null){
+            intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+
         var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
         googleSignInClient = GoogleSignIn.getClient(this,gso)
+
 
         btn_login_google.setOnClickListener {
             var signInIntent = googleSignInClient?.signInIntent
@@ -77,8 +87,6 @@ class LoginActivity : AppCompatActivity() {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG002", "signInWithEmail:failure", task.exception)
                             if (task.exception!!.message.equals(getString(R.string.error_msg_login))) {
-
-
                                 Toast.makeText(this, "Usuario no registrado", Toast.LENGTH_SHORT).show()
                             }else {
                             Toast.makeText(

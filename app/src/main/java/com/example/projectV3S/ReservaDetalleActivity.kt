@@ -15,6 +15,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.content_reserva_detalle.*
 
 class ReservaDetalleActivity : AppCompatActivity() {
@@ -31,7 +32,8 @@ class ReservaDetalleActivity : AppCompatActivity() {
         reservasLocal = intent?.getSerializableExtra("reserva")as ReservasLocal
         idreserv =reservasLocal.id
 
-        if (reservasLocal.cancha == getString(R.string.Bolera)) imageViewdetail.setImageResource(R.drawable.bolera)
+        if (reservasLocal.cancha == getString(R.string.Bolera)) imageviewdetail.setImageResource(R.drawable.bolera)
+
         if (reservasLocal.estado == "Aceptado") bt_certificado.visibility = View.VISIBLE
         if (reservasLocal.estado != "Cancelado" && reservasLocal.estado != "Rechazado") bt_cancelarr.visibility = View.VISIBLE
         tv_cancha.text = reservasLocal.cancha
@@ -82,6 +84,12 @@ class ReservaDetalleActivity : AppCompatActivity() {
                         tv_ubicacion.text = datoesc.ubicacion
                         tv_telefon.text = datoesc.telefono
                         cargarpartici(datoesc.integran!!.toInt())
+                        if (!datoesc.urlimage.isNullOrEmpty()) {
+                            Picasso.get().load(datoesc.urlimage).into(imageviewdetail)
+                            //Glide.with(itemView.context).load(URL_IMAGES + movie.posterPath).into(itemView.iv_picture)
+                        }else if (reservasLocal.cancha != getString(R.string.Bolera)){
+                            Picasso.get().load(R.drawable.ima_ind).into(imageviewdetail)
+                        }
                     }
                 }
             }

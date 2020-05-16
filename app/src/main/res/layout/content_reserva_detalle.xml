@@ -21,7 +21,7 @@
             android:layout_height="280dp">
 
             <ImageView
-                android:id="@+id/imageViewdetail"
+                android:id="@+id/imageviewdetail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 />

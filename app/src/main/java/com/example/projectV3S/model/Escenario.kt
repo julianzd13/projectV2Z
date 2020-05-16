@@ -12,5 +12,6 @@ class Escenario (
     var telefono: String? = "",
     var latitude: String? = "",
     var longitude: String? = "",
-    var descripcion: String? = ""
+    var descripcion: String? = "",
+    var urlimage: String? = ""
 )

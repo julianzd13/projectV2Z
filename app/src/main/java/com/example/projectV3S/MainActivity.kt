@@ -122,11 +122,10 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId==R.id.mcerrar){
 
-
             var intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
             FirebaseAuth.getInstance().signOut()
             googleSignInClient?.signOut()
+            startActivity(intent)
             finish()
         }
         return super.onOptionsItemSelected(item)
