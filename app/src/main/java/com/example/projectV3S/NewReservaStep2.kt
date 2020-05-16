@@ -2,6 +2,7 @@ package com.example.projectV3S
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,10 +10,12 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.example.projectV3S.Room.NewResRoom
 import com.example.projectV3S.UTILS.Constantes
 import com.example.projectV3S.model.NuevaReservRoom
 import com.example.projectV3S.model.Usuario
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -26,9 +29,14 @@ class NewReservaStep2 : AppCompatActivity() {
     var num_particif1 : String = Constantes.EMPTY
     var numpartici = 0
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_reserva_step2)
+
+
+        et_user_num_cedu_step2_1.focusable = View.NOT_FOCUSABLE
+        participante1()
 
         var dataf1 = intent?.extras
         num_particif1 = dataf1!!.getString("Numpartici").toString()
@@ -53,6 +61,27 @@ class NewReservaStep2 : AppCompatActivity() {
             if (numpartici != num_particif1.toInt()) numpartici = 0
         }
 
+
+    }
+
+    private fun participante1() {
+
+        val auth: FirebaseAuth
+        auth = FirebaseAuth.getInstance()
+
+        val user = auth.currentUser
+
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("usuarios").child(user!!.uid)
+        myRef.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val userdocu1 = dataSnapshot.getValue(Usuario::class.java)
+                et_user_num_cedu_step2_1.setText(userdocu1!!.num_documento)
+            }
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("quepasomal", "Failed to read value", error.toException())
+            }
+        })
 
     }
 
