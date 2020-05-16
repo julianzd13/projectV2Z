@@ -74,12 +74,12 @@ class NewReservaStep2 : AppCompatActivity() {
         sp_cedula_step2_14.id = 14
         sp_cedula_step2_15.id = 15
         sp_cedula_step2_16.id = 16
-        for (i in 1..num_particif1.toInt()){
+        /*for (i in 1..num_particif1.toInt()){
             //var keystring1 = "sp_cedula_step2_" + i.toString()
             //sp_cedula_step2_${i}.visibility = View.VISIBLE
             //keystring1.visibility = View.VISIBLE
             findViewById<Spinner>(i).visibility = View.VISIBLE
-        }
+        }*/
 
         et_user_num_cedu_step2_1.id = 21
         et_user_num_cedu_step2_2.id = 22

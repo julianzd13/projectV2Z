@@ -35,10 +35,10 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
     var latitudef : String? = "6.267651"
     var mapmarker : String? = "UdeA"
 
-    var horafHoradRVA : String = Constantes.EMPTY
+    var horafHoradRVA : String? = Constantes.EMPTY
 
     private var cal = Calendar.getInstance()
-    private lateinit var  fecha : String
+    var  fecha : String? = Constantes.EMPTY
 
     var canchaselec : String? = null
     var num_partici : String? = null
@@ -67,7 +67,7 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
                 val sdf = SimpleDateFormat(format, Locale.US)
                 fecha = sdf.format(cal.time).toString()
 
-                comprobarfecha(fecha)
+                comprobarfecha(fecha!!)
 
                 //et_new_fecha_inten.setText(fecha)
                 //Log.d("Fecha",fecha)
@@ -205,6 +205,7 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
                     val reser = snapshot.getValue(Reservas::class.java)
                     if (reser!!.iduser == user!!.uid){
                         Toast.makeText(this@NewReservaStep1, "Ya tiene reserva en esta fecha", Toast.LENGTH_SHORT).show()
+                        et_new_fecha_inten.setText(Constantes.EMPTY)
                         existereser = true
                     }
                 }
@@ -258,6 +259,7 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
                 }
                 if (!existecancha) {
                     Toast.makeText(this@NewReservaStep1, "No existe", Toast.LENGTH_SHORT).show()
+                    canchaselec = null
                 }
             }
 
