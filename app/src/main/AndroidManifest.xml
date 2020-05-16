@@ -16,7 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewReservaStep3"></activity>
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -29,21 +29,11 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".NewReservaStep2" />
-        <activity android:name=".VistaHoraDispActivity" />
-        <activity
-            android:name=".NewReservaStep1"
-            android:label="@string/titul_nuevares" />
-        <activity
-            android:name=".ReservaDetalleActivity"
-            android:label="@string/title_activity_reserva_detalle"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/name_misreserv"></activity>
-        <activity android:name=".RegistroActivity" />
-        <activity android:name=".LoginActivity" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,9 +42,40 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".LoginActivity" />
+
+
+        <activity android:name=".RegistroActivity" />
+
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/name_misreserv"></activity>
+
+
+
+
+
+        <activity
+            android:name=".NewReservaStep1"
+            android:label="@string/titul_nuevares" />
+
+        <activity android:name=".VistaHoraDispActivity"
+            android:label="@string/hora_disp"/>
+
+        <activity android:name=".NewReservaStep2"
+            android:label="@string/titul_nuevares"/>
+
+        <activity android:name=".NewReservaStep3"
+            android:label="@string/titul_nuevares"/>
+
+        <activity
+            android:name=".ReservaDetalleActivity"
+            android:label="@string/title_activity_reserva_detalle"
+            android:parentActivityName=".MainActivity"/>
+            <!--android:theme="@style/AppTheme.NoActionBar"/>-->
+
     </application>
 
 </manifest>

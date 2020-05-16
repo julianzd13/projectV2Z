@@ -57,10 +57,9 @@
 
     <string name="cancha">Cancha</string>
     <string name="estado">Estado</string>
-    <string name="title_activity_reserva_detalle">ReservaDetalleActivity</string>
+    <string name="title_activity_reserva_detalle">Detalle Reserva</string>
     <string name="fecha">Fecha</string>
     <string name="horario">Horario</string>
-    <string name="reserva4">Campo de tiro</string>
     <string name="tipo_doc">Tipo de documento*</string>
     <string name="user_num_cedu">Número de identificación*</string>
     <string name="sexo">Sexo*</string>
@@ -85,6 +84,7 @@
     <string name="ubicacion">"Ubicacion: "</string>
     <string name="telefono">"Telefono: "</string>
     <string name="certificado">Descargar Certificado</string>
+
 
 
 </resources>
