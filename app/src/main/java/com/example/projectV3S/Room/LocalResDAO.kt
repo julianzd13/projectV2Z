@@ -12,8 +12,8 @@ interface LocalResDAO {
     @Query("SELECT * FROM tabla_localres")
     fun getReservaslocalRoom(): List<ReservasLocalRoom>
 
-    @Query("SELECT * FROM tabla_localres")
-    fun searchReservalocalRoom(): ReservasLocalRoom
+    @Query("SELECT * FROM tabla_localres WHERE idreserva LIKE :idreserva")
+    fun searchReservalocalRoom(idreserva: String): ReservasLocalRoom
 
     @Update
     fun updateReservalocalRoom(reservasLocalRoom: ReservasLocalRoom)

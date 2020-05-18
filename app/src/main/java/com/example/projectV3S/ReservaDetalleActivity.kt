@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
+import com.example.projectV3S.Room.NewResRoom
 import com.example.projectV3S.model.Escenario
 import com.example.projectV3S.model.Reservas
 import com.example.projectV3S.model.ReservasLocal
@@ -195,6 +196,21 @@ class ReservaDetalleActivity : AppCompatActivity() {
     }
 
     private fun cancelarreserva() {
+        val localresDao = NewResRoom.database2.LocalResDAO()
+        var localresRoom = localresDao.searchReservalocalRoom(idreserv.toString())
+        localresDao.updateReservalocalRoom(
+            ReservasLocalRoom(
+                localresRoom.id, idreserv, localresRoom.escen, localresRoom.fecha, localresRoom.hora, "Cancelado",
+                localresRoom.descripcion, localresRoom.ubicacion, localresRoom.latitud, localresRoom.longitud, localresRoom.telefono,
+                localresRoom.urlimage, localresRoom.integrantes, localresRoom.participante1, localresRoom.participante2,
+                localresRoom.participante3, localresRoom.participante4, localresRoom.participante5, localresRoom.participante6,
+                localresRoom.participante7, localresRoom.participante8, localresRoom.participante9, localresRoom.participante10,
+                localresRoom.participante11, localresRoom.participante12, localresRoom.participante13, localresRoom.participante14,
+                localresRoom.participante15, localresRoom.participante16
+            )
+        )
+
+
         val auth: FirebaseAuth
         auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
@@ -228,7 +244,6 @@ class ReservaDetalleActivity : AppCompatActivity() {
                     val reservadel = snapshot.getValue(Reservas::class.java)
                     if (reservadel!!.iduser.equals(userid)) {
                         myRef.child(userid).removeValue().addOnSuccessListener {
-
                             var intent = Intent(this@ReservaDetalleActivity, MainActivity::class.java)
                             startActivity(intent)
                             finish()

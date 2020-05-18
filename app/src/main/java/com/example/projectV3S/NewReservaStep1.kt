@@ -7,9 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.DatePicker
-import android.widget.SearchView
-import android.widget.Toast
+import android.widget.*
 import com.example.projectV3S.Room.NewResRoom
 import com.example.projectV3S.Room.NewresDAO
 
@@ -28,6 +26,11 @@ import java.util.*
 
 class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
 
+
+    lateinit var adapter : ArrayAdapter<String?>
+    var lista: ArrayList<String?> = ArrayList()
+    var myList: ListView? = null
+    var mysearch: SearchView? = null
 
     private lateinit var mMap: GoogleMap
     private lateinit var mapView: MapView
@@ -111,6 +114,35 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
         //val database = FirebaseDatabase.getInstance()
         //val myRef = database.getReference("escenarios")
 
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("escenarios")
+
+
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("quepasomal", "Failed to read value.", error.toException())
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (snapshot in dataSnapshot.children) {
+                    val canchan = snapshot.getValue(Escenario::class.java)
+                    lista.add(canchan!!.nombre)
+                }
+            }
+        })
+
+        //lista.add("Bolera")
+        //lista.add("Voley")
+        //lista.add("Fútbol")
+        //lista.add("Piscina")
+
+
+        myList = this.findViewById(R.id.listView)
+        mysearch=this.findViewById(R.id.searchView)
+        adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,lista)
+        myList!!.adapter = adapter
+
+
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -140,6 +172,18 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
                         }
                     })
                 }*/
+
+                listView.visibility = View.VISIBLE
+
+                adapter!!.filter.filter(newText)
+
+                listView.setOnItemClickListener { adapterView, view, position, id ->
+
+
+                    val listescen: String = myList!!.getItemAtPosition(position).toString()
+                    mysearch!!.setQuery(listescen, true)
+                    listView.visibility = View.GONE
+                }
                 return false
             }
 

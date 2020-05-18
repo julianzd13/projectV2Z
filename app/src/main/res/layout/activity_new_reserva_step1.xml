@@ -57,6 +57,12 @@
 
                 />
 
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:visibility="gone"/>
+
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
