@@ -180,7 +180,6 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
 
                 listView.setOnItemClickListener { adapterView, view, position, id ->
 
-
                     val listescen: String = myList!!.getItemAtPosition(position).toString()
                     mysearch!!.setQuery(listescen, true)
                     listView.visibility = View.GONE
