@@ -147,6 +147,7 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 firebaseSearchSub(query)
+
                 return false
             }
 
