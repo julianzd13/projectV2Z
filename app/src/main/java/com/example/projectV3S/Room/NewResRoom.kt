@@ -7,6 +7,7 @@ class NewResRoom : Application() {
 
     companion object{
         lateinit var database1: NewresDataBase
+        lateinit var database2: LocalresDataBase
     }
 
     override fun onCreate() {
@@ -19,6 +20,15 @@ class NewResRoom : Application() {
             )
             .allowMainThreadQueries()
             .build()
+
+        database2 = Room.databaseBuilder(
+            this,
+            LocalresDataBase::class.java,
+            "localres_DB"
+        )
+            .allowMainThreadQueries()
+            .build()
+
 
     }
 

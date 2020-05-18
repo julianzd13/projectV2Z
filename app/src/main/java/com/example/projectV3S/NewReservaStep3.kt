@@ -2,25 +2,33 @@ package com.example.projectV3S
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.example.projectV3S.Room.NewResRoom
 import com.example.projectV3S.Room.NewresDAO
 import com.example.projectV3S.UTILS.Constantes
+import com.example.projectV3S.model.Escenario
 import com.example.projectV3S.model.Reservas
 import com.example.projectV3S.model.ReservasLocal
+import com.example.projectV3S.model.ReservasLocalRoom
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_new_reserva_step3.*
+import java.sql.Types.NULL
 
 class NewReservaStep3 : AppCompatActivity() {
 
     var flag: Int = 0
     var num_particif1 : String = Constantes.EMPTY
-
     var escenario : String = Constantes.EMPTY
     var fecha : String = Constantes.EMPTY
     var hora : String = Constantes.EMPTY
@@ -43,6 +51,7 @@ class NewReservaStep3 : AppCompatActivity() {
     var partici_16 : String = Constantes.EMPTY
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_reserva_step3)
@@ -53,8 +62,10 @@ class NewReservaStep3 : AppCompatActivity() {
         CargardatosfromRoom()
 
         bt_conti_to_main.setOnClickListener {
+
+            //bt_conti_to_main.focusable = View.NOT_FOCUSABLE
             flag = 0
-            Guardar_Newreser_Firebase()
+            Guardar_Newreser()
         }
 
     }
@@ -152,8 +163,7 @@ class NewReservaStep3 : AppCompatActivity() {
 
     }
 
-    private fun Guardar_Newreser_Firebase() {
-
+    private fun Guardar_Newreser() {
 
         val auth: FirebaseAuth
         auth = FirebaseAuth.getInstance()
@@ -178,6 +188,7 @@ class NewReservaStep3 : AppCompatActivity() {
         myRef = database.getReference("reservasuser")
         val idreserva = myRef.push().key
 
+
         val reserval = ReservasLocal(
             cancha = escenario, estado = "Pendiente", fecha = fecha, hora = hora, id = idreserva, num_doc_part1 = partici_1,
             num_doc_part2 = partici_2, num_doc_part3 = partici_3, num_doc_part4 = partici_4,num_doc_part5 = partici_5,
@@ -191,11 +202,68 @@ class NewReservaStep3 : AppCompatActivity() {
             Toast.makeText(this, flag.toString(),Toast.LENGTH_SHORT).show()
             if (flag==2){
                 flag = 0
-                var intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
+                Guardar_Newreser_Room(idreserva)
+                //var intent = Intent(this, MainActivity::class.java)
+                //startActivity(intent)
+                //finish()
             }
         }
+
+    }
+
+    private fun Guardar_Newreser_Room(idres: String) {
+
+        var descrip: String? = Constantes.EMPTY
+        var ubica : String? = Constantes.EMPTY
+        var telef : String? = Constantes.EMPTY
+        var integra : String? = Constantes.EMPTY
+        var latitud : String? = Constantes.EMPTY
+        var longitud : String? = Constantes.EMPTY
+
+        val database = FirebaseDatabase.getInstance()
+        var myRef = database.getReference("escenarios")
+
+
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(error: DatabaseError) {
+                Log.w("quepasomal", "Failed to read value", error.toException())
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (snapshot in dataSnapshot.children){
+                    val canchatales = snapshot.getValue(Escenario::class.java)
+                    if (canchatales!!.nombre.equals(escenario)){
+                        descrip = canchatales.descripcion
+                        ubica = canchatales.ubicacion
+                        telef = canchatales.telefono
+                        integra = canchatales.integran
+                        latitud = canchatales.latitude
+                        longitud = canchatales.longitude
+
+                        val localreservroom = ReservasLocalRoom(id = NULL, idreserva = idres, escen = escenario, fecha = fecha,
+                            hora = hora, estado = "Pendiente", descripcion = descrip,ubicacion = ubica, latitud = latitud,
+                            longitud = longitud,telefono = telef, urlimage = "",integrantes = integra, participante1 = partici_1,
+                            participante2 = partici_2, participante3 = partici_3, participante4 = partici_4, participante5 = partici_5,
+                            participante6 = partici_6, participante7 = partici_7, participante8 = partici_8, participante9 = partici_9,
+                            participante10 = partici_10, participante11 = partici_11, participante12 = partici_12,
+                            participante13 = partici_13, participante14 = partici_14, participante15 = partici_15, participante16 = partici_16)
+
+
+                        val localresDao = NewResRoom.database2.LocalResDAO()
+                        localresDao.insertLocalresRoom(localreservroom)
+
+                        var intent = Intent(this@NewReservaStep3, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+
+                    }
+
+                }
+
+            }
+
+        })
+
 
     }
 

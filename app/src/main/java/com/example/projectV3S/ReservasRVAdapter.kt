@@ -69,6 +69,7 @@ class ReservasRVAdapter(
             itemView.setOnClickListener{
                 Toast.makeText(context,reserva.cancha,Toast.LENGTH_SHORT).show()
                 var intent = Intent(context,ReservaDetalleActivity::class.java)
+                intent.putExtra("internet",0)
                 intent.putExtra("reserva",reserva).addFlags(FLAG_ACTIVITY_NEW_TASK)
 
                 context.startActivity(intent)

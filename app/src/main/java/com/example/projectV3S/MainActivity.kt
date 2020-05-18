@@ -1,16 +1,22 @@
 package com.example.projectV3S
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.projectV3S.Room.LocalResDAO
 import com.example.projectV3S.Room.NewResRoom
 import com.example.projectV3S.Room.NewresDAO
 import com.example.projectV3S.model.ReservasLocal
+import com.example.projectV3S.model.ReservasLocalRoom
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -26,6 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     val reservasLocalList: MutableList<ReservasLocal> = ArrayList()
     lateinit var reservasRVAdapter : ReservasRVAdapter
+    lateinit var reservasRVAdapterRoom: ReservasRVAdapterRoom
 
     var googleSignInClient : GoogleSignInClient? = null
 
@@ -41,14 +48,35 @@ class MainActivity : AppCompatActivity() {
 
         //eliminar_reserva_enpro()
 
-        cargarreservasuser()
+        val cm = this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
+        val isConnected: Boolean = activeNetwork?.isConnectedOrConnecting == true
+
+        if (isConnected == true){
+            rv_reservas.layoutManager = LinearLayoutManager(
+                applicationContext,
+                RecyclerView.VERTICAL,
+                false
+            )
+            cargarreservasuser()
+        }
+        if (isConnected == false){
+
+            rv_reservas.layoutManager = LinearLayoutManager(
+                applicationContext,
+                RecyclerView.VERTICAL,
+                false
+            )
+
+            cargarreservasuserRoom()
+        }
 
 
-        rv_reservas.layoutManager = LinearLayoutManager(
+        /*rv_reservas.layoutManager = LinearLayoutManager(
             applicationContext,
             RecyclerView.VERTICAL,
             false
-        )
+        )*/
 
         /*reservasRVAdapter = ReservasRVAdapter(
             applicationContext,
@@ -70,6 +98,19 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    }
+////////////////////////////////////RRROOOOOOMMMMMM////////////////////////////////////??
+    private fun cargarreservasuserRoom() {
+
+        var localResDAO: LocalResDAO = NewResRoom.database2.LocalResDAO()
+        var alllocalres: List<ReservasLocalRoom> = localResDAO.getReservaslocalRoom()
+
+        reservasRVAdapterRoom= ReservasRVAdapterRoom(
+            applicationContext,
+            alllocalres as ArrayList<ReservasLocalRoom>
+        )
+        rv_reservas.setHasFixedSize(true)
+        rv_reservas.adapter = reservasRVAdapterRoom
     }
 
     private fun cargarreservasuser() {

@@ -10,6 +10,7 @@ import android.widget.LinearLayout
 import com.example.projectV3S.model.Escenario
 import com.example.projectV3S.model.Reservas
 import com.example.projectV3S.model.ReservasLocal
+import com.example.projectV3S.model.ReservasLocalRoom
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -21,7 +22,10 @@ import kotlinx.android.synthetic.main.content_reserva_detalle.*
 class ReservaDetalleActivity : AppCompatActivity() {
 
     var idreserv: String? = ""
+    var idreservroom: String? = ""
+
     private lateinit var reservasLocal: ReservasLocal
+    private lateinit var reservasLocalRoom: ReservasLocalRoom
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +33,72 @@ class ReservaDetalleActivity : AppCompatActivity() {
         //setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        reservasLocal = intent?.getSerializableExtra("reserva")as ReservasLocal
-        idreserv =reservasLocal.id
+        var conectionTYPE = intent?.extras
+
+        val flag = conectionTYPE!!.getInt("internet")
+
+        if (flag == 1){
+            reservasLocalRoom = intent?.getSerializableExtra("reservaRoom")as ReservasLocalRoom
+            idreservroom = reservasLocalRoom.idreserva
+            cargarfromRoom()
+        }
+        if (flag == 0){
+            reservasLocal = intent?.getSerializableExtra("reserva")as ReservasLocal
+            idreserv = reservasLocal.id
+            cargarfromfirebase()
+        }
+
+
+        //if(idreserv!!.isNotEmpty()) cargarfromfirebase()
+
+        //if (idreservroom!!.isNotEmpty()) cargarfromRoom()
+
+
+
+    }
+
+    private fun cargarfromRoom() {
+
+        bt_cancelarr.visibility = View.GONE
+
+        if (reservasLocalRoom.escen == getString(R.string.Bolera)) imageviewdetail.setImageResource(R.drawable.bolera)
+        if (reservasLocalRoom.escen != getString(R.string.Bolera)) imageviewdetail.setImageResource(R.drawable.ima_ind)
+
+        if (reservasLocalRoom.estado == "Aceptado") bt_certificado.visibility = View.VISIBLE
+        if (reservasLocalRoom.estado != "Cancelado" && reservasLocalRoom.estado != "Rechazado") bt_cancelarr.visibility = View.VISIBLE
+        tv_cancha.text = reservasLocalRoom.escen
+        tv_estad.text = reservasLocalRoom.estado
+        tv_fec.text = reservasLocalRoom.fecha
+        tv_hora1.text = reservasLocalRoom.hora
+
+        tv_descrip.text = reservasLocalRoom.descripcion
+        tv_ubicacion.text = reservasLocalRoom.ubicacion
+        tv_telefon.text = reservasLocalRoom.telefono
+
+        tv_part1.text = reservasLocalRoom.participante1
+        tv_part2.text = reservasLocalRoom.participante2
+        tv_part3.text = reservasLocalRoom.participante3
+        tv_part4.text = reservasLocalRoom.participante4
+        tv_part5.text = reservasLocalRoom.participante5
+        tv_part6.text = reservasLocalRoom.participante6
+        tv_part7.text = reservasLocalRoom.participante7
+        tv_part8.text = reservasLocalRoom.participante8
+        tv_part9.text = reservasLocalRoom.participante9
+        tv_part10.text = reservasLocalRoom.participante10
+        tv_part11.text = reservasLocalRoom.participante11
+        tv_part12.text = reservasLocalRoom.participante12
+        tv_part13.text = reservasLocalRoom.participante13
+        tv_part14.text = reservasLocalRoom.participante14
+        tv_part15.text = reservasLocalRoom.participante15
+        tv_part16.text = reservasLocalRoom.participante16
+
+        cargarpartici(reservasLocalRoom.integrantes!!.toInt())
+
+
+
+    }
+
+    private fun cargarfromfirebase() {
 
         if (reservasLocal.cancha == getString(R.string.Bolera)) imageviewdetail.setImageResource(R.drawable.bolera)
 
@@ -64,6 +132,8 @@ class ReservaDetalleActivity : AppCompatActivity() {
             cancelarreserva()
 
         }
+
+
     }
 
 
@@ -143,6 +213,8 @@ class ReservaDetalleActivity : AppCompatActivity() {
     }
 
     private fun eliminarreserva(userid:String) {
+
+
         val database = FirebaseDatabase.getInstance()
         var myRef = database.getReference("reservas").child(reservasLocal.fecha.toString()).child(
             reservasLocal.cancha.toString()
@@ -156,6 +228,7 @@ class ReservaDetalleActivity : AppCompatActivity() {
                     val reservadel = snapshot.getValue(Reservas::class.java)
                     if (reservadel!!.iduser.equals(userid)) {
                         myRef.child(userid).removeValue().addOnSuccessListener {
+
                             var intent = Intent(this@ReservaDetalleActivity, MainActivity::class.java)
                             startActivity(intent)
                             finish()
