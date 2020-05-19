@@ -182,7 +182,6 @@ class NewReservaStep3 : AppCompatActivity() {
 
         myRef.child(fecha).child(escenario).child(user.uid).setValue(reserva).addOnSuccessListener {
             flag ++
-            Toast.makeText(this, flag.toString(),Toast.LENGTH_SHORT).show()
         }
 
         myRef = database.getReference("reservasuser")
@@ -199,7 +198,6 @@ class NewReservaStep3 : AppCompatActivity() {
 
         myRef.child(user.uid).child(idreserva!!).setValue(reserval).addOnSuccessListener {
             flag ++
-            Toast.makeText(this, flag.toString(),Toast.LENGTH_SHORT).show()
             if (flag==2){
                 flag = 0
                 Guardar_Newreser_Room(idreserva)
@@ -252,6 +250,7 @@ class NewReservaStep3 : AppCompatActivity() {
                         val localresDao = NewResRoom.database2.LocalResDAO()
                         localresDao.insertLocalresRoom(localreservroom)
 
+                        Toast.makeText(this@NewReservaStep3, "Reserva Existosa", Toast.LENGTH_LONG).show()
                         var intent = Intent(this@NewReservaStep3, MainActivity::class.java)
                         startActivity(intent)
                         finish()

@@ -50,12 +50,12 @@ class NewReservaStep2 : AppCompatActivity() {
             Comprobacionlayers()
             if (numpartici == num_particif1.toInt()){
                 Guardar_partici_ROOM()
-                Toast.makeText(this, "BIIIIENNN", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "BIIIIENNN", Toast.LENGTH_SHORT).show()
                 intent = Intent(this, NewReservaStep3::class.java)
                 intent.putExtra("Numpartici", num_particif1)
                 startActivity(intent)
                 numpartici = 0
-
+                finish()
 
             }
             if (numpartici != num_particif1.toInt()) numpartici = 0
@@ -194,7 +194,7 @@ class NewReservaStep2 : AppCompatActivity() {
                     }
                 }
                 if (!existedocu){
-                    Toast.makeText(this@NewReservaStep2, "NO existe Ususario", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@NewReservaStep2, "Ususario no registrado", Toast.LENGTH_SHORT).show()
                     findViewById<EditText>(j).setText(Constantes.EMPTY)
                 }
             }

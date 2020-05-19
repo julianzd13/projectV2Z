@@ -321,7 +321,7 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
         }
         if (requestCode == 2233 && resultCode == Activity.RESULT_OK){
 
-            Toast.makeText(this, "BBIIIEENNNN", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "BBIIIEENNNN", Toast.LENGTH_SHORT).show()
 
             var datafhora = data?.extras
             horafHoradRVA = datafhora?.getString("horaselec").toString()

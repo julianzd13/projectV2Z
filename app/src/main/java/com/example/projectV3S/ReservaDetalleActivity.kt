@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.Toast
 import com.example.projectV3S.Room.NewResRoom
 import com.example.projectV3S.model.Escenario
 import com.example.projectV3S.model.Reservas
@@ -224,7 +225,7 @@ class ReservaDetalleActivity : AppCompatActivity() {
             eliminarreserva(user.uid)
         }
 
-
+        Toast.makeText(this, "Reserva Cancelada", Toast.LENGTH_LONG).show()
 
     }
 
