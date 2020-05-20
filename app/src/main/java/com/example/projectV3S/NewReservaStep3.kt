@@ -251,7 +251,7 @@ class NewReservaStep3 : AppCompatActivity() {
                         localresDao.insertLocalresRoom(localreservroom)
 
                         Toast.makeText(this@NewReservaStep3, "Reserva Existosa", Toast.LENGTH_LONG).show()
-                        var intent = Intent(this@NewReservaStep3, MainActivity::class.java)
+                        var intent = Intent(this@NewReservaStep3, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                         startActivity(intent)
                         finish()
 

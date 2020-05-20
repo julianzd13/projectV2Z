@@ -83,7 +83,7 @@ class VistaHoraDispActivity : AppCompatActivity(), HoradispRVAdapter.OnItemClick
                     if (fechan!!.fecha.equals(fecha_new)) {
 
                         //Log.d("siiiii", "si diiiooooo")
-                        Toast.makeText(this@VistaHoraDispActivity,"ENTRO EN EL IF", Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(this@VistaHoraDispActivity,"ENTRO EN EL IF", Toast.LENGTH_SHORT).show()
 
                         horariosdispolist.removeAll { it.hora == fechan.hora}
 

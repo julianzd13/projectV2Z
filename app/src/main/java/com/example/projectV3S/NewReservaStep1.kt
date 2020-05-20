@@ -46,7 +46,7 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
     var canchaselec : String? = null
     var num_partici : String? = null
 
-
+    var flagtoast = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -81,6 +81,8 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
         }
 
         et_new_fecha_inten.setOnClickListener {
+
+            flagtoast = 0
 
             if(canchaselec == null){
                 Toast.makeText(this, "Primero la cancha", Toast.LENGTH_SHORT).show()
@@ -220,6 +222,8 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
                 intent = Intent(this, NewReservaStep2::class.java)
                 intent.putExtra("Numpartici", num_partici)
                 startActivity(intent)
+
+
                 //Toast.makeText(this, "CONTINUARA", Toast.LENGTH_SHORT).show()
             }
         }
@@ -232,14 +236,14 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
 
 //////////////////////////METODOS////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private fun comprobarfecha(fecha: String) {
+    private fun comprobarfecha(fechaj: String) {
 
         val auth: FirebaseAuth
         auth = FirebaseAuth.getInstance()
         val user = auth.currentUser
 
         val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference("reservas").child(fecha).child(canchaselec.toString())
+        val myRef = database.getReference("reservas").child(fechaj).child(canchaselec.toString())
 
         var existereser = false
         myRef.addValueEventListener(object : ValueEventListener{
@@ -247,14 +251,17 @@ class NewReservaStep1 : AppCompatActivity(), OnMapReadyCallback{
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 for (snapshot in dataSnapshot.children){
                     val reser = snapshot.getValue(Reservas::class.java)
-                    if (reser!!.iduser == user!!.uid){
+                    if (reser!!.iduser == user!!.uid && flagtoast == 0){
                         Toast.makeText(this@NewReservaStep1, "Ya tiene reserva en esta fecha", Toast.LENGTH_SHORT).show()
                         et_new_fecha_inten.setText(Constantes.EMPTY)
+                        fecha = Constantes.EMPTY
                         existereser = true
+
                     }
                 }
                 if (!existereser) {
                     et_new_fecha_inten.setText(fecha)
+                    flagtoast = 1
                 }
             }
 

@@ -55,7 +55,7 @@ class NewReservaStep2 : AppCompatActivity() {
                 intent.putExtra("Numpartici", num_particif1)
                 startActivity(intent)
                 numpartici = 0
-                finish()
+                //finish()
 
             }
             if (numpartici != num_particif1.toInt()) numpartici = 0
